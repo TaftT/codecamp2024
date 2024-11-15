@@ -1,7 +1,7 @@
 {
   "name": "functions",
   "engines": {
-    "node": "16"
+    "node": "20"
   },
   "scripts": {
     "start": "firebase functions:shell"
