@@ -12,14 +12,17 @@
     <header>
         <h1>LOGO Test</h1>
         <nav>
+            <span class="material-symbols-outlined" id="menuIcon">
+                menu
+                </span>
         </nav>
     </header>
 
     <main>
-        <div id="AppName">
+        <div id="AppName" class="login">
             <p v-if="error">{{error}}</p>
             <input type="email" v-model="email" @keydown="resetError"  placeholder="Enter your email">
-            <button @click="sendLink">Send Sign-In Link</button>
+            <button id="loginButton" @click="sendLink">Send Sign-In Link</button>
         </div>
     </main>
     <aside></aside>
