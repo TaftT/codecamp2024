@@ -3,7 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const test = require('./routes/test');
+const userRoutes = require('./routes/userRoutes');
+const competitionRoutes = require('./routes/competitions');
+const entriesRoutes = require('./routes/entries');
 
 // Parse JSON bodies
 app.use(express.json());
@@ -17,7 +19,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Use the `/test` route from your test module
-app.use('/test', test);
+app.use('/users', userRoutes);
+app.use('/competitions', competitionRoutes);
+// app.use('/entries', entriesRoutes);
 
 app.route('/').get((req, res) => {
   console.log(req.body);

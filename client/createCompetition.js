@@ -53,7 +53,7 @@ var dashboardApp = new Vue({
           try {
             // Get the ID token
             const idToken = await auth.currentUser.getIdToken();
-            
+            console.log(`Bearer ${idToken}`)
             // If we have the token, send the request
             const response = await fetch(apiUrl+'/test', { // replace with your actual API URL
               method: 'GET',
