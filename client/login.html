@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Your styles -->
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>LOGO Test</h1>
+        <nav>
+        </nav>
+    </header>
+
+    <main>
+        <div id="AppName">
+            <p v-if="error">{{error}}</p>
+            <input type="email" v-model="email" @keydown="resetError"  placeholder="Enter your email">
+            <button @click="sendLink">Send Sign-In Link</button>
+        </div>
+    </main>
+    <aside></aside>
+    <footer>
+    </footer>
+
+    <!-- Vuejs Development -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+    <!-- Firebase (use the latest version) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js"></script>
+
+    <!-- Your custom JavaScript -->
+    <script type="module" src="login.js"></script>
+</body>
+</html>

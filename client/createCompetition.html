@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<style>
+    /* Prevent flickering of Vue bindings */
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+<body>
+    <div id="dashboardApp" v-cloak>
+        <h1>Welcome, {{ user? user.email:"" }}</h1>
+        <!-- More user info and dashboard content here -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="module" src="createCompetition.js"></script>
+</body>
+</html>
