@@ -7,6 +7,14 @@ body{
 main{
     text-align:center;
     color:white;
+    background-color: #011C40;
+
+}
+
+#dashboardApp{
+    background-color:#081526;
+    text-align:center;
+    color:white;
 }
 
 .login{
@@ -16,6 +24,46 @@ main{
 
 }
 
+#createAccount{
+    background-color:#081526;
+    height:100vh;
+
+}
+
+#accountDetails{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#createCompBig{
+    background-color: #011C40;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+input[type=url]{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  textarea{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+  }
 
 input[type=email]{
     width: 80%;
@@ -129,19 +177,24 @@ header h1{
 
 #mainCompWrapper{
     padding-top:10px;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
 
 }
 
 .featureEntryTile{
     height:312px;
-    width:80%;
+    width:30%;
+    min-width: 300px;
     background-image: url("imgs/homeHero.jpg");
     background-position:center;
     background-size: cover;
     background-repeat: no-repeat;
     margin-left:auto;
     margin-right:auto;
-    margin-bottom:10px;
+    margin-bottom:20px;
+    margin-top:20px;
     text-align:center;
     color:white;
     display:flex;
@@ -194,6 +247,92 @@ input[type=text]{
     padding:10px;
 }
 
+#entryDetails{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color:#011C40;
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    
+
+}
+
+#entryImages{
+    padding:20px;
+    width:45%;
+    background-color:#081526;
+
+}
+
+#entryMinorDeets{
+    width:45%;
+    padding:20px;
+    background-color:#081526;
+}
+
+#entryHero{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color:#011C40;
+    
+    
+}
+
+iframe{
+    padding:0px;
+    width:80%;
+    
+}
+
+#entryVideo{
+    padding:20px;
+    width:47%;
+
+}
+
+#entryMainText{
+    width:47%;
+    padding:20px;
+}
+
+#createCompButton{
+    background-color:#43AED9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    border-radius:5px;
+    font-weight: bold;
+
+}
+
+#createEntryButton{
+    background-color:#43AED9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    border-radius:5px;
+    font-weight: bold;
+
+}
+
+
 #moreCompButton{
     background-color:#43AED9;
     border: none;
@@ -211,7 +350,34 @@ input[type=text]{
 }
 
 
-/* @media (max-width: 480px){
+ @media (max-width: 480px){ 
+    #entryHero{
+        background-color:#011C40;
+        display:block;
+        
+        
+    }
+    
+    iframe{
+        padding:0px;
+        width:80%;
+        
+    }
+    
+    #entryVideo{
+        margin-left:auto;
+        margin-right:auto;
+        padding:20px;
+        width:80%;
+    
+    }
+    
+    #entryMainText{
+        margin-left:auto;
+        margin-right:auto;
+        width:80%;
+        padding:20px;
+    }
     body{
         width:390px;
         margin-left:auto;

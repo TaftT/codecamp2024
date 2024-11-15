@@ -42,7 +42,7 @@ var dashboardApp = new Vue({
             this.user = user;
             console.log('User is signed in:', user);
           } else {
-            window.location.href = "/login.html"; // Redirect to login if not signed in
+            // window.location.href = "/login.html"; // Redirect to login if not signed in
           }
         });
       },
