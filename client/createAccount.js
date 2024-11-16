@@ -42,6 +42,7 @@ var AppName = new Vue({
         },
         postUserInfo: async function() {
             console.log("here")
+            
             const idToken = await auth.currentUser.getIdToken();
             console.log(`Bearer ${idToken}`)
 

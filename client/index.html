@@ -61,11 +61,6 @@
 
     
 
-
-
-
-
-
         
             <!-- DISPLAY ALL COMPETITIONS -->
         
@@ -79,7 +74,41 @@
                     
                 </div>
             </div>
+          
             
+
+
+
+            <!-- CREATE ENTRY -->
+
+            <!-- NEEDS WORK WHEN API IS COMPLETEDS -->
+
+            <div id="dashboardApp" v-cloak v-if="page=='createEntry'">
+                <div id="createCompBig">
+                  <h1>Create Entry</h1>
+                  <input type="text" v-model="entryName" id="competitionNameInput" placeholder="Entry Name" required><br>
+        
+                  <input type="email" v-model="entryEmails" id="organizerEmailsInput" placeholder="Team Emails (separate multiple emails with commas)" required multiple><br>
+        
+                  <input type="text"  id="imageUploadInput" placeholder="Image Upload" ><br>
+        
+                  <input type="url" v-model="youtubeUrl" id="youtubeUrl" placeholder="Enter Youtube URL" required><br>
+        
+                  <input type="url" v-model="gitHubUrl" id="gitUrl" placeholder="Enter GitHub URL"><br>
+        
+                  <input type="text" v-model="projectPasscode" id="projectPasscodeInput" placeholder="Project Passcode" required><br>
+        
+                  <input type="text" v-model="categoryEntry" id="categoryInput" placeholder="Category" required><br>
+        
+                  <input type="text" v-model="teamNumInput" id="teamNumInput" placeholder="Enter Table Location" required><br>
+        
+                  <textarea v-model="entryDescription" id="projectDescriptionInput" placeholder="Project Description" required></textarea><br>
+        
+                  <div id="createEntryButton" v-on:click="createEntry()">Submit</div>
+        
+        
+                </div>
+            </div>
 
 
 
@@ -113,9 +142,37 @@
                                 <h3 class="featuredEntryTitle"> Entry Title</h3>
                             </div>
                     </div>
-                    <a href="displayEntries.html" id="moreCompButton">
+                    <div v-on:click="changePage('allEntries')" id="moreCompButton">
                         View More
-                    </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- DISPLAY ALL ENTRIES -->
+
+            <div id="homeShowcaseComp" v-if="page=='allEntries'">
+                <h1>Competition Name Entries</h1>
+                <div id="myBtnContainer">
+                    <button class="btn active" onclick="filterSelection('all')"> Show All</button>
+                    <button class="btn" onclick="filterSelection('beginner')"> Beginner</button>
+                    <button class="btn" onclick="filterSelection('advanced')"> Advanced</button>
+                    <button class="btn" onclick="filterSelection('industry')"> Industry</button>
+                  </div>
+                
+                  <div id="compMainShowcase">
+                    <div id="mainCompWrapper">
+                            <div class="featureEntryTile">
+                                <h3 class="featuredEntryTitle"> Entry Title</h3>
+                            </div>
+                            <div class="featureEntryTile">
+                                <h3 class="featuredEntryTitle"> Entry Title</h3>
+                            </div>
+                            <div class="featureEntryTile">
+                                <h3 class="featuredEntryTitle"> Entry Title</h3>
+                            </div>
+                    </div>
+                    
                 </div>
             </div>
         

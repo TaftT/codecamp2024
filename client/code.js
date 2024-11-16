@@ -45,7 +45,15 @@ var AppName = new Vue({
         test: 'Hello test',
         competitions:[],
         page:"index",
-        competition:null
+        competition:null,
+        entryName: "",
+        entryEmails:"",
+        youTubeUrl:"",
+        gitHubUrl:"",
+        projectPasscode:"",
+        categoryEntry:"",
+        teamNumInput:"",
+        entryDescription:""
     },
     methods: {
         myMethod: function () {
@@ -67,7 +75,36 @@ var AppName = new Vue({
         },
         changePage: function (vari) {
             this.page=vari;
+        },
+        createEntry: function (){
+            console.log("here")
+            
+            //GET BEARER TOKEN SOMEHOW
+
+            fetch(`https://app-ia6miajuua-uc.a.run.app/users/updateInfo`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${idToken}`,
+                  },
+                body:JSON.stringify({
+                    entryName: this.entryName,
+                    entryEmails: this.entryEmails.split(',').map(email => email.trim()),
+                    youTubeUrl:this.youTubeUrl,
+                    gitHubUrl:this.gitHubUrl,
+                    projectPasscode:this.projectPasscode,
+                    categoryEntry:this.categoryEntry,
+                    teamNumInput:this.teamNumInput,
+                    entryDescription:this.entryDescription
+                })
+                  
+            }).then(response => response.json())  // Parse the response as JSON
+            .then(data => {
+                console.log("Response from server:", data);
+            })
+
         }
+
     },
     filters: {
         format: function (date) {
