@@ -15,76 +15,82 @@ if (!admin.apps.length) {
 }
 
 router.get("/byId/:id", async (req, res) => {
-    const id = req.params.id;
-    res.status(201).json({ data: [
-        {
-            name:"Code Camp 2024 - Industry",
-            competitionId:id,
-            creatorUserId:"435345",
-            description:"Lets win this. Lets win this. Lets win this. Lets win this.",
-            FeatureImageUrl:"https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg", 
-            status:"Open",
-            entries:[{
-                entryId:"jkfsdkf",
-                group:[{
-                    username:"Taft Thompson",
-                    linkedInURL:"https://www.linkedin.com/in/taft-thompson-ba6522181/"
-                },{
-                    username:"Brooklyn Thompson",
-                    linkedInURL:"https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-                }],
-                category:"Webapp",
-                name:"Code Camp Showcase", 
-                description:"Showcase",
-                FeaturedImg:"https://images.pexels.com/photos/38519/macbook-laptop-ipad-apple-38519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                gitURL:"https://github.com/TaftT/codecamp2024", 
-                YouTubeURL:"https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley", 
-                location:"H1"
-            },
-            {
-                entryId:"ggdfsg",
-                group:[{
-                    username:"Taft Thompson",
-                    linkedInURL:"https://www.linkedin.com/in/taft-thompson-ba6522181/"
-                },{
-                    username:"Brooklyn Thompson",
-                    linkedInURL:"https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-                }],
-                category:"Webapp",
-                name:"Test 2 Code Camp Showcase", 
-                FeatureImageUrl:"https://images.pexels.com/photos/3930068/pexels-photo-3930068.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                description:"Showcase",
-                gitURL:"https://github.com/TaftT/codecamp2024", 
-                YouTubeURL:"https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley", 
-                location:"H1"
-            }]
-        }
-    ] });
-})
+  const { id: competitionId } = req.params;
+
+  try {
+      // Reference to the competitions node in Realtime Database
+      const db = admin.database();
+      const competitionRef = db.ref(`competitions/${competitionId}`);
+      const entriesRef = db.ref('entries');
+
+      // Fetch competition by ID
+      const competitionSnapshot = await competitionRef.once('value');
+      const competitionData = competitionSnapshot.val();
+
+      // If competition not found
+      if (!competitionData) {
+          return res.status(404).json({ error: `Competition with ID ${competitionId} not found.` });
+      }
+
+      // Fetch entries with the competitionId
+      const entriesSnapshot = await entriesRef.orderByChild('competitionId').equalTo(competitionId).once('value');
+      const entriesData = entriesSnapshot.val();
+
+      // Transform entries into an array
+      const entries = entriesData
+          ? Object.keys(entriesData).map(entryId => ({
+                entryId,
+                ...entriesData[entryId]
+            }))
+          : [];
+
+      // Respond with the competition data and its entries
+      const responseData = {
+          name: competitionData.name,
+          competitionId,
+          creatorUserId: competitionData.creatorUserId,
+          description: competitionData.description,
+          FeatureImageUrl: competitionData.FeatureImageUrl,
+          status: competitionData.status,
+          entries
+      };
+
+      res.status(200).json({ data: responseData });
+  } catch (error) {
+      console.error("Error fetching competition or entries by ID:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 
 router.get("/all", async (req, res) => {
-    try {
+  try {
       // Reference to the competitions node in Realtime Database
       const db = admin.database();
       const competitionsRef = db.ref('competitions');
-  
+
       // Fetch all competitions
       const snapshot = await competitionsRef.once('value');
       const competitionsData = snapshot.val();
-  
+
       // If there are no competitions
       if (!competitionsData) {
-        return res.status(404).json({ message: 'No competitions found' });
+          return res.status(404).json({ message: 'No competitions found' });
       }
-  
-      // Return all competitions
-      res.status(200).json(competitionsData);
-    } catch (error) {
+
+      // Transform competitionsData (object) into an array
+      const competitionsList = Object.keys(competitionsData).map(key => ({
+          id: key,
+          ...competitionsData[key]
+      }));
+
+      // Return all competitions as a list
+      res.status(200).json(competitionsList);
+  } catch (error) {
       console.error("Error fetching competitions:", error);
       res.status(500).json({ error: "Internal Server Error" });
-    }
-  });
+  }
+});
 
 // Middleware for authenticating the user
 router.put("/new", authMiddleware, async (req, res) => {

@@ -21,7 +21,7 @@ app.use(cors(corsOptions));
 // Use the `/test` route from your test module
 app.use('/users', userRoutes);
 app.use('/competitions', competitionRoutes);
-// app.use('/entries', entriesRoutes);
+app.use('/entries', entriesRoutes);
 
 app.route('/').get((req, res) => {
   console.log(req.body);
