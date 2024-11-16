@@ -148,7 +148,7 @@ header h1{
 #homeShowcaseComp{
     background-color: #011C40;
     text-align:center;
-    height:100vh;
+    min-height:100vh;
     
 }
 

@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
 </head>
+<style>
+    /* Prevent flickering of Vue bindings */
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 <body>
     <header>
         <h1>LOGO Test 1</h1>
@@ -21,42 +27,120 @@
 
 
     <main>
+        <div id="AppName">
 
+            <!-- INDEX HOME PAGE -->
+        <div v-if="page=='index'">
         <div id="welcomeHero">
             <div id="welcomeTextOverlay">
                 <h1>Competitors Welcome</h1>
                 <h2>Your idea, your competition, your legacy.</h2>
-                <a href="createCompetition.html" id="moreCompButton">
+                <div  id="moreCompButton" v-on:click="changePage('createCompetition')">
                     Create Competition
-                </a>
+                </div>
             </div>
 
         </div>
         <div id="homeShowcaseComp">
+            <h2> Recent Competitions</h2>
             <div id="featuredCompWrapper">
-                    <div class="featureCompTile">
-                        <h3 class="featuredCompTitle"> Competition Title</h3>
-                    </div>
-                    <div class="featureCompTile">
-                        <h3 class="featuredCompTitle"> Competition Title</h3>
-                    </div>
-                    <div class="featureCompTile">
-                        <h3 class="featuredCompTitle"> Competition Title</h3>
+                    <div class="featureCompTile" v-on:click="goToComp(competition)" v-for="competition in competitions.slice(0, 3)" :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
+                        <h3 class="featuredCompTitle" > {{competition.name}}</h3>
                     </div>
             </div>
-            <a href="displayCompetitions.html" id="moreCompButton">
+            <div id="moreCompButton" v-on:click="changePage('competitionShowcase')" >
                 View More
-            </a>
+            </div>
         </div>
+    </div>
+
+
+    <!-- CREATE COMPETITION -->
+
+    <div id="dashboardApp" v-cloak v-if="page=='createCompetition'">
+        <div id="createCompBig">
+          <h1>Create Competition</h1>
+          <input type="text" id="competitionNameInput" placeholder="Competition Name" required><br>
+
+          <input type="email" id="organizerEmailsInput" placeholder="Email of Organizers (separate multiple emails with commas)" required multiple><br>
+
+          <input type="text" id="datesInput" placeholder="Dates" required><br>
+
+          <input type="text" id="imageUploadInput" placeholder="Image Upload" required><br>
+
+          <input type="email" id="judgesEmailsInput" placeholder="Judges Emails (separate multiple emails with commas)" required multiple><br>
+
+          <input type="text" id="competitionPasscodeInput" placeholder="Competition Passcode" required><br>
+
+          <textarea id="competitionDescriptionInput" placeholder="Competition Description" required></textarea><br>
+
+          <div id="createCompButton">Submit</div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+        
+            <!-- DISPLAY ALL COMPETITIONS -->
+        
+            <div id="homeShowcaseComp" v-if="page=='competitionShowcase'">
+                <h1>Competitions</h1>
+                <div id="featuredCompWrapper" >
+                    
+                    <div class="featureCompTile" v-on:click="goToComp(competition)" v-for="competition in competitions" :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
+                        <h3 class="featuredCompTitle" > {{competition.name}}</h3>
+                    </div>
+                    
+                </div>
+            </div>
             
-        <!-- <div id="AppName">
-            {{test}}
+
+
+
+
+
+
+<!-- MAIN COMPETITION PAGE NEEDS ENTRIESS -->
+            <div id="homeShowcaseComp" v-if="page=='competition'">
+                <div id="welcomeHero"  :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
+                    <div id="welcomeTextOverlay">
+                        <h1>{{competition.name}}</h1>
+                        <p>
+                           {{competition.description}}
+                        </p>
+                        <a href="enterCompetition.html" id="moreCompButton">
+                            Enter
+                        </a>
+        
+                    </div>
+        
+                </div>
+                <div id="compMainShowcase">
+                    <div id="mainCompWrapper">
+                            <div class="featureEntryTile">
+                                <h3 class="featuredEntryTitle"> Entry Title</h3>
+                            </div>
+                            <div class="featureEntryTile">
+                                <h3 class="featuredEntryTitle"> Entry Title</h3>
+                            </div>
+                            <div class="featureEntryTile">
+                                <h3 class="featuredEntryTitle"> Entry Title</h3>
+                            </div>
+                    </div>
+                    <a href="displayEntries.html" id="moreCompButton">
+                        View More
+                    </a>
+                </div>
+            </div>
+        
+
+
         </div>
-
-
-        <div class=""></div>
-        <section></section>
-        <article></article> -->
     </main>
     <aside></aside>
     <footer>
