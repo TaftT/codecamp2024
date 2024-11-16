@@ -64,8 +64,8 @@ var dashboardApp = new Vue({
             const idToken = await auth.currentUser.getIdToken();
             console.log(`Bearer ${idToken}`)
             // If we have the token, send the request
-            const response = await fetch(apiUrl+'/test', { // replace with your actual API URL
-              method: 'GET',
+            const response = await fetch("https://app-ia6miajuua-uc.a.run.app/competitions/new", { // replace with your actual API URL
+              method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${idToken}`, // Send the ID token in the Authorization header
