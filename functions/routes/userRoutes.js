@@ -13,6 +13,10 @@ if (!admin.apps.length) {
   admin.app(); // If already initialized, use the existing app
 }
 
+router.get("/test", async (req, res) => {
+  res.status(201).json({ data: "test" });
+})
+
 router.get("/self", authMiddleware, async (req, res) => {
   res.status(201).json({ userData: req.user });
 })
