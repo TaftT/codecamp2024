@@ -24,7 +24,6 @@ main{
     background-color:#081526;
     text-align:center;
     color:white;
-    height:100vh;
 }
 
 #createCompButton.clicked {
@@ -118,6 +117,11 @@ input[type=email]{
     margin-bottom:10px;
     border-radius:5px;
     font-weight: bold;
+    cursor:pointer;
+}
+
+#loginButton:hover{
+    background-color: #2e7c9b;
 }
 
 #loginButton.clicked {
@@ -308,6 +312,49 @@ input[type=text]{
 
 }
 
+#menuIcon {
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+    margin: 10px;
+}
+
+#menuDropdown {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 100;
+}
+
+#menuDropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menuDropdown li {
+    border-bottom: 1px solid #ddd;
+}
+
+#menuDropdown li:last-child {
+    border-bottom: none;
+}
+
+#menuDropdown a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    transition: background 0.3s ease;
+}
+
+#menuDropdown a:hover {
+    background: #f0f0f0;
+}
+
 #entryMinorDeets{
     width:45%;
     height:200px;
@@ -320,6 +367,7 @@ input[type=text]{
 .details-title {
     font-size: 1.5rem;
     font-weight: bold;
+    margin-top:10px;
     margin-bottom: 10px;
 }
 
@@ -382,7 +430,11 @@ iframe{
     margin-bottom:10px;
     border-radius:5px;
     font-weight: bold;
+    cursor:pointer;
 
+}
+#createCompButton:hover{
+    background-color: #2e7c9b;
 }
 
 #createEntryButton{
@@ -399,7 +451,12 @@ iframe{
     margin-bottom:10px;
     border-radius:5px;
     font-weight: bold;
+    cursor:pointer;
 
+}
+
+#createEntryButton:hover{
+    background-color: #2e7c9b;
 }
 
 
@@ -416,6 +473,11 @@ iframe{
     margin-bottom:10px;
     border-radius:5px;
     font-weight: bold;
+    cursor:pointer;
+}
+
+#moreCompButton:hover{
+    background-color: #2e7c9b;
 }
 
 .indexButton{
@@ -432,6 +494,12 @@ iframe{
     margin-bottom:10px;
     border-radius:5px;
     font-weight: bold;
+    cursor:pointer;
+}
+
+.indexButton:hover{
+    background-color: #2e7c9b;
+
 }
 
 

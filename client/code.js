@@ -72,7 +72,10 @@ var AppName = new Vue({
         entryDescription:"",
         competitionId:"",
         currentEnt:null,
-        entries:[]
+        menuOpen:false,
+        entries:[],
+        userCompCode:"",
+        errorMessage:""
     },
     methods: {
         runRoute: function() {
@@ -100,6 +103,19 @@ var AppName = new Vue({
             this.page='singleEntry';
             console.log(ent)
             this.currentEnt = ent;
+        },
+        enterAComp:function (){
+            console.log(this.competition)
+            if (this.userCompCode==this.competition.passcode){
+                this.changePage('createEntry');
+                console.log("passed the test");
+
+            }
+            else{
+                this.errorMessage="Something is wrong with your code. Please enter the correct one."
+
+            }
+
         },
 
         changePage: function (vari) {
@@ -136,6 +152,7 @@ var AppName = new Vue({
             .then(data => {
                 console.log("Response from server:", data);
             })
+            window.location.href = 'index.html';
 
         },
         getAllEntries: async function (){

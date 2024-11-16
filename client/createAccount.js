@@ -46,7 +46,8 @@ var AppName = new Vue({
         userName: '',
         linkedIn: "",
         isClicked:false,
-        errorMessage:""
+        errorMessage:"",
+        menuOpen:false
     },
     methods: {
         myMethod: function () {
@@ -77,6 +78,7 @@ var AppName = new Vue({
                 .then(data => {
                     console.log("Response from server:", data);
                 })
+                window.location.href = 'index.html';
                 console.log("yes");
                 
             }

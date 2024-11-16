@@ -10,18 +10,29 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="AppName" v-cloak>
     <header>
         <h1>Code Show Off</h1>
-        <nav>
-            <span class="material-symbols-outlined" id="menuIcon">
+        <nav id="hamburgerNav">
+            <span 
+                class="material-symbols-outlined" 
+                id="menuIcon" 
+                @click="menuOpen = !menuOpen">
                 menu
-                </span>
+            </span>
+            <div v-if="menuOpen" id="menuDropdown">
+                <ul>
+                    <li><a href="#services" v-on:click="page='index'">Home</a></li>
+                    <li v-on:click="page='competitionShowcase'"><a href="#home">All Competitions</a></li>
+                    <li><a href="createCompetition.html">Create Competition</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
 
     <main>
-        <div id="AppName" v-cloak>
+        
 
             <!-- INDEX HOME PAGE -->
         <div v-if="page=='index'">
@@ -53,8 +64,9 @@
 <!-- ENTER COMPETITION -->
 <div id="mainEnterComp" v-if="page=='enterCompetition'">
     <h1>Enter Competition Code</h1>
-    <input type="text" id="compCodeInput" placeholder="Competition Code"><br>
-    <div v-on:click="changePage('createEntry')" class="indexButton">
+    <input type="text" id="compCodeInput" v-model="userCompCode" placeholder="Competition Code"><br>
+    <p id="error" v-if="errorMessage"> {{errorMessage}} </p>
+    <div v-on:click="enterAComp()" class="indexButton">
         Enter
     </div>
 </div>
@@ -217,8 +229,9 @@
         
 
 
-        </div>
+        
     </main>
+</div>
     <aside></aside>
     <footer>
     </footer>

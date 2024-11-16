@@ -15,15 +15,26 @@
     }
   </style>
 <body>
+  <div id="dashboardApp" v-cloak>
   <header>
-    <h1>LOGO Test 1</h1>
-        <nav>
-            <span class="material-symbols-outlined" id="menuIcon">
-                menu
-                </span>
-        </nav>
-  </header>
-    <div id="dashboardApp" v-cloak>
+    <h1>Code Show Off</h1>
+    <nav id="hamburgerNav">
+        <span 
+            class="material-symbols-outlined" 
+            id="menuIcon" 
+            @click="menuOpen = !menuOpen">
+            menu
+        </span>
+        <div v-if="menuOpen" id="menuDropdown">
+            <ul>
+                <li><a href="#services" v-on:click="page='index'">Home</a></li>
+                <li v-on:click="page='competitionShowcase'"><a href="#home">All Competitions</a></li>
+                <li><a href="createCompetition.html">Create Competition</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+    
         <div id="createCompBig">
           <h1>Create Competition</h1>
           <input type="text" v-model="competitionName" id="competitionNameInput" placeholder="Competition Name" required><br>

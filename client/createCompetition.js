@@ -49,7 +49,8 @@ var dashboardApp = new Vue({
       judgeEmails:"",
       competitionPasscode:"",
       competitionDescription:"",
-      errorMessage:""
+      errorMessage:"",
+      menuOpen:false
     },
     methods: {
       checkSignIn: function () {
@@ -101,6 +102,7 @@ var dashboardApp = new Vue({
    
              const data = await response.json();
              console.log('Server Response:', data); // Handle the response from the server 
+             window.location.href = 'index.html';
             
           }
           else{
