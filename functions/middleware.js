@@ -39,6 +39,7 @@ const authMiddleware = async (req, res, next) => {
       req.user.linkedInURL = userData[userId].linkedInURL
       req.user.profilePicURL = userData[userId].profilePicURL
       req.user.username = userData[userId].username
+      next();
     }
 
     
