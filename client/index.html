@@ -94,6 +94,14 @@
                   <input type="email" v-model="entryEmails" id="organizerEmailsInput" placeholder="Team Emails (separate multiple emails with commas)" required multiple><br>
         
                   <input type="text" v-model="featuredImg" id="imageUploadInput" placeholder="Image Upload" ><br>
+
+                  <div>
+                    <input type="file" @change="handleFileChange" />
+                    <button @click="uploadImage" :disabled="!selectedFile">Upload</button>
+                    <p v-if="uploading">Uploading...</p>
+                    <p v-if="imageUrl">Image uploaded successfully: <a :href="imageUrl" target="_blank">{{ imageUrl }}</a></p>
+                    <p v-if="error">{{ error }}</p>
+                  </div>
         
                   <input type="url" v-model="youTubeUrl" id="youtubeUrl" placeholder="Enter Youtube URL" required><br>
         
@@ -194,6 +202,7 @@
     <!-- Vuejs Production -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
     <!-- Your javaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="code.js"></script>
 </body>
 </html>

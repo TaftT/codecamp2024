@@ -70,7 +70,10 @@ var AppName = new Vue({
         categoryEntry:"",
         teamNumInput:"",
         entryDescription:"",
-        competitionId:"" //not sure how to get this
+        competitionId:"",
+        selectedFile: null,
+      uploading: false,
+      error: null,
     },
     methods: {
         myMethod: function () {
@@ -126,7 +129,40 @@ var AppName = new Vue({
                 console.log("Response from server:", data);
             })
 
-        }
+        },
+        handleFileChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+              this.selectedFile = file;
+              this.error = null;
+            }
+          },
+          async uploadImage() {
+            if (!this.selectedFile) {
+              this.error = "Please select a file to upload.";
+              return;
+            }
+      
+            const formData = new FormData();
+            formData.append('image', this.selectedFile);
+      
+            this.uploading = true;
+            this.error = null;
+            this.featuredImg = null;
+      
+            try {
+              const response = await axios.post('http://127.0.0.1:5001/code-camp-showcase/us-central1/app/entries/upload', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+              });
+              this.featuredImg = response.data.url;
+            } catch (error) {
+              this.error = error.response?.data?.error || "Upload failed.";
+            } finally {
+              this.uploading = false;
+            }
+          },
 
     },
     filters: {
