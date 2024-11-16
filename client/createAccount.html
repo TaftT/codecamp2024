@@ -21,28 +21,23 @@
 
 
     <main>
-
-        <div id="createAccount">
-            <div id="accountDetails">
-                <h1>Create Account</h1>
-                <input type="text" id="usernameInput" placeholder="Enter Username" required><br>
-                <input type="url" id="linkedINUrl" placeholder="Enter LinkedIn URL" required><br>
-                <a href="" id="moreCompButton">
-                    Create Account
-                </a>
-
+        <div id="AppName">
+            <div id="createAccount">
+                <div id="accountDetails">
+                    <h1>Create Account</h1>
+                    <input v-model="userName" type="text" id="usernameInput" placeholder="Enter Displayed Name" required><br>
+                    <input v-model="linkedIn" type="url" id="linkedINUrl" placeholder="Enter LinkedIn URL" required><br>
+                    <div v-on:click="postUserInfo()" id="moreCompButton">
+                        Create Account
+                    </div>
+    
+                </div>
+                
             </div>
-            
-        </div>
-            
-        <!-- <div id="AppName">
-            {{test}}
-        </div>
 
 
-        <div class=""></div>
-        <section></section>
-        <article></article> -->
+
+        </div>
     </main>
     <aside></aside>
     <footer>
@@ -54,6 +49,6 @@
     <!-- Vuejs Production -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
     <!-- Your javaScript -->
-    <script src="code.js"></script>
+    <script type="module" src="createAccount.js"></script>
 </body>
 </html>
