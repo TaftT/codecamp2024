@@ -309,6 +309,9 @@ input[type=text]{
     height:200px;
     background-color:#081526;
     margin-bottom:20px;
+    background-position:center;
+        background-size: contain;
+        background-repeat: no-repeat;
 
 }
 
@@ -433,6 +436,39 @@ iframe{
     cursor:pointer;
 
 }
+
+#votebutton{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    border-radius:5px;
+    font-weight: bold;
+    cursor:pointer;
+
+}
+
+#votebutton:hover{
+    background-color: #2e7c9b;
+}
+
+#votebutton.clicked {
+    background-color: #98A6A2;
+    color: black;
+}
+
+#votebutton.notclicked {
+    background-color: #43AED9;
+    color: white;
+}
+
+
 #createCompButton:hover{
     background-color: #2e7c9b;
 }
