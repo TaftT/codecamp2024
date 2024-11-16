@@ -131,6 +131,12 @@ var AppName = new Vue({
         },
 
         changePage: function (vari) {
+            if (vari=="enterCompetition"){
+                if (!auth.currentUser){
+                    window.location.href = "/login.html";
+                }
+
+            }
             this.page=vari;
         },
         createEntry: async function (){
