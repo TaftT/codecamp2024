@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>LOGO Test 1</h1>
+        <h1>Code Show Off</h1>
         <nav>
             <span class="material-symbols-outlined" id="menuIcon">
                 menu
@@ -134,7 +134,7 @@
                 </div>
                 <div id="compMainShowcase">
                     <div id="mainCompWrapper">
-                            <div class="featureEntryTile"  v-on:click="page='singleEntry'" v-for="entry in entries" :style="{ backgroundImage: `url(${entry.FeatureImageUrl})` }">
+                            <div class="featureEntryTile"  v-on:click="goToEntry(entry)" v-for="entry in entries" :style="{ backgroundImage: `url(${entry.FeatureImageUrl})` }">
                                 <h3 class="featuredEntryTitle"> {{entry.entryName}}</h3>
                             </div>
                     </div>
@@ -152,7 +152,7 @@
                     <iframe  
                     height="200"
                     width= "300"
-                        src="https://www.youtube.com/embed/xvFZjo5PgG0" 
+                    :src="'https://www.youtube.com/embed/' + extractYouTubeVideoId(currentEnt.youTubeUrl)" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -161,20 +161,29 @@
                     
                 </div>
                 <div id="entryMainText">
-                    <h1> Entry Name</h1>
+                    <h1> {{currentEnt.entryName}}</h1>
                     <p>
-                        Get ready to test your skills and push your limits in this exciting competition. Whether you're a seasoned expert or a newcomer, this is the perfect opportunity to showcase your talents and compete against the best. With multiple rounds, unique challenges, and the chance to win amazing prizes, it's time to step up and prove your worth!
+                        {{currentEnt.entryDescription}}
                     </p>
                 </div>
             </div>
             <div id="entryDetails" v-if="page=='singleEntry'">
-                <div id="entryImages"></div>
-                <div id="entryMinorDeets">
-                    <h2>Additional Details</h2>
-                    <ul>
-                        <li>GitHub Repo</li>
-                        <li>Category</li>
-                        <li>Number</li>
+                <div id="entryImages" :style="{ backgroundImage: `url(${currentEnt.FeatureImageUrl})` }"></div>
+                <div id="entryMinorDeets" v-if="currentEnt">
+                    <h2 class="details-title">Additional Details</h2>
+                    <ul class="details-list">
+                        <li>
+                            <strong>GitHub Repo:</strong> 
+                            <a :href="currentEnt.gitHubUrl" target="_blank" rel="noopener noreferrer">
+                                {{ currentEnt.gitHubUrl }}
+                            </a>
+                        </li>
+                        <li>
+                            <strong>Category:</strong> {{ currentEnt.categoryEntry || 'N/A' }}
+                        </li>
+                        <li>
+                            <strong>Table Location:</strong> {{ currentEnt.teamNumInput || 'N/A' }}
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -188,24 +197,19 @@
 
             <div id="homeShowcaseComp" v-if="page=='allEntries'">
                 <h1>Competition Name Entries</h1>
-                <div id="myBtnContainer">
+                <!-- <div id="myBtnContainer">
                     <button class="btn active" onclick="filterSelection('all')"> Show All</button>
                     <button class="btn" onclick="filterSelection('beginner')"> Beginner</button>
                     <button class="btn" onclick="filterSelection('advanced')"> Advanced</button>
                     <button class="btn" onclick="filterSelection('industry')"> Industry</button>
-                  </div>
+                  </div> -->
                 
                   <div id="compMainShowcase">
                     <div id="mainCompWrapper">
-                            <div class="featureEntryTile">
-                                <h3 class="featuredEntryTitle"> Entry Title</h3>
-                            </div>
-                            <div class="featureEntryTile">
-                                <h3 class="featuredEntryTitle"> Entry Title</h3>
-                            </div>
-                            <div class="featureEntryTile">
-                                <h3 class="featuredEntryTitle"> Entry Title</h3>
-                            </div>
+                        <div class="featureEntryTile"  v-on:click="page='singleEntry'" v-for="entry in entries.slice(0, 3)" :style="{ backgroundImage: `url(${entry.FeatureImageUrl})` }">
+                            <h3 class="featuredEntryTitle"> {{entry.entryName}}</h3>
+                        </div>
+                            
                     </div>
                     
                 </div>

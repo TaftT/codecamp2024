@@ -71,6 +71,7 @@ var AppName = new Vue({
         teamNumInput:"",
         entryDescription:"",
         competitionId:"",
+        currentEnt:null,
         entries:[]
     },
     methods: {
@@ -85,12 +86,22 @@ var AppName = new Vue({
                 });
             })
         },
+        extractYouTubeVideoId(url) {
+            const match = url?.match(/v=([^&]+)/);
+            return match ? match[1] : "dQw4w9WgXcQ"; // Return video ID or null if not found
+        },
         goToComp: function (comp) {
             this.page='competition';
             console.log(comp)
             this.competition = comp;
             this.getAllEntries()
         },
+        goToEntry: function (ent) {
+            this.page='singleEntry';
+            console.log(ent)
+            this.currentEnt = ent;
+        },
+
         changePage: function (vari) {
             this.page=vari;
         },
