@@ -58,6 +58,7 @@ var AppName = new Vue({
     data: {
         test: 'Hello test',
         competitions:[],
+        isClicked:false,
         page:"index",
         competition:null,
         entryName: "",
@@ -103,6 +104,14 @@ var AppName = new Vue({
             this.page='singleEntry';
             console.log(ent)
             this.currentEnt = ent;
+        },
+        vote:function (){
+            // pass along currentEnt.entryId
+            if (!this.isClicked){
+                this.isClicked=true;
+
+            }
+            
         },
         enterAComp:function (){
             console.log(this.competition)

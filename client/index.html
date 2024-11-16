@@ -129,7 +129,7 @@
 
 
 
-<!-- MAIN COMPETITION PAGE NEEDS ENTRIESS -->
+<!-- MAIN COMPETITION PAGE  -->
             <div id="homeShowcaseComp" v-if="page=='competition'">
                 <div id="welcomeHero"  :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
                     <div id="welcomeTextOverlay">
@@ -177,6 +177,9 @@
                     <p>
                         {{currentEnt.entryDescription}}
                     </p>
+
+                    <div id="votebutton" :class="{ clicked: isClicked, notclicked: !isClicked}" v-on:click="vote()">Vote</div>
+
                 </div>
             </div>
             <div id="entryDetails" v-if="page=='singleEntry'">
@@ -209,16 +212,10 @@
 
             <div id="homeShowcaseComp" v-if="page=='allEntries'">
                 <h1>Competition Name Entries</h1>
-                <!-- <div id="myBtnContainer">
-                    <button class="btn active" onclick="filterSelection('all')"> Show All</button>
-                    <button class="btn" onclick="filterSelection('beginner')"> Beginner</button>
-                    <button class="btn" onclick="filterSelection('advanced')"> Advanced</button>
-                    <button class="btn" onclick="filterSelection('industry')"> Industry</button>
-                  </div> -->
                 
                   <div id="compMainShowcase">
                     <div id="mainCompWrapper">
-                        <div class="featureEntryTile"  v-on:click="page='singleEntry'" v-for="entry in entries.slice(0, 3)" :style="{ backgroundImage: `url(${entry.FeatureImageUrl})` }">
+                        <div class="featureEntryTile"  v-on:click="page='singleEntry'" v-for="entry in entries" :style="{ backgroundImage: `url(${entry.FeatureImageUrl})` }">
                             <h3 class="featuredEntryTitle"> {{entry.entryName}}</h3>
                         </div>
                             
