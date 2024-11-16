@@ -37,12 +37,14 @@ var dashboardApp = new Vue({
     },
     methods: {
       checkSignIn: function () {
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
           if (user) {
             this.user = user;
             console.log('User is signed in:', user);
+            const idToken = await auth.currentUser.getIdToken();
+            console.log(`Bearer ${idToken}`)
           } else {
-            // window.location.href = "/login.html"; // Redirect to login if not signed in
+            window.location.href = "/login.html"; // Redirect to login if not signed in
           }
         });
       },
