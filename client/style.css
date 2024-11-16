@@ -1,3 +1,7 @@
+[v-cloak] {
+    display: none;
+  }
+
 body{
     margin-left:auto;
     margin-right:auto;
@@ -11,11 +15,36 @@ main{
 
 }
 
+#error{
+    margin-left:auto;
+    margin-right:auto;
+}
+
 #dashboardApp{
     background-color:#081526;
     text-align:center;
     color:white;
     height:100vh;
+}
+
+#createCompButton.clicked {
+    background-color: #98A6A2;
+    color: black;
+}
+
+#createCompButton.notclicked {
+    background-color: #43AED9;
+    color: white;
+}
+
+#moreCompButton.clicked {
+    background-color: #98A6A2;
+    color: black;
+}
+
+#moreCompButton.notclicked {
+    background-color: #43AED9;
+    color: white;
 }
 
 .login{
@@ -77,7 +106,6 @@ input[type=email]{
   }
 
 #loginButton{
-    background-color:#43AED9;
     border: none;
     color: white;
     padding: 10px 27px;
@@ -91,6 +119,17 @@ input[type=email]{
     border-radius:5px;
     font-weight: bold;
 }
+
+#loginButton.clicked {
+    background-color: #011C40;
+}
+
+#loginButton.notclicked {
+    background-color: #43AED9;
+    color: white;
+}
+
+
 
 h1{
     margin-top:0px;
@@ -300,7 +339,6 @@ iframe{
 }
 
 #createCompButton{
-    background-color:#43AED9;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -335,7 +373,22 @@ iframe{
 
 
 #moreCompButton{
-    background-color:#43AED9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    border-radius:5px;
+    font-weight: bold;
+}
+
+.indexButton{
+    background-color: #43AED9;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -386,10 +439,7 @@ iframe{
         margin-top:0px;
         margin-bottom:0px;
     }
-    main{
-        text-align:center;
-        color:white;
-    }
+
     
     .login{
         background-color: #98A6A2;
@@ -399,32 +449,7 @@ iframe{
     }
     
     
-    input[type=email]{
-        width: 80%;
-        padding: 12px 20px;
-        margin: 15px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-    
-    #loginButton{
-        background-color:#43AED9;
-        border: none;
-        color: white;
-        padding: 10px 27px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin-left:auto;
-        margin-right:auto;
-        margin-bottom:10px;
-        border-radius:5px;
-        font-weight: bold;
-    }
-    
+
     h1{
         margin-top:0px;
         margin-bottom:0px;
@@ -479,11 +504,7 @@ iframe{
     
     }
     
-    #homeShowcaseComp{
-        background-color: #011C40;
-        text-align:center;
-        
-    }
+    
     
     
     #mainEnterComp{
@@ -494,11 +515,7 @@ iframe{
     
     }
     
-    #compMainShowcase{
-        background-color: #011C40;
-        text-align:center;
     
-    }
     
     #featuredCompWrapper{
         padding-top:10px;
@@ -529,15 +546,6 @@ iframe{
     
     }
     
-    input[type=text]{
-        width: 80%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
     
     .featureCompTile{
         height:312px;
@@ -569,22 +577,7 @@ iframe{
         background-color: rgba(0, 0, 0, 0.5);
         padding:10px;
     }
-    
-    #moreCompButton{
-        background-color:#43AED9;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin-left:auto;
-        margin-right:auto;
-        margin-bottom:10px;
-        border-radius:5px;
-        font-weight: bold;
-    }
+
     
 
-} */
+} 

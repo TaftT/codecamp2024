@@ -20,10 +20,10 @@
     </header>
 
     <main>
-        <div id="AppName" class="login">
-            <p v-if="error">{{error}}</p>
+        <div id="AppName" class="login" v-cloak>
             <input type="email" v-model="email" @keydown="resetError"  placeholder="Enter your email">
-            <button id="loginButton" @click="sendLink">Send Sign-In Link</button>
+            <p v-if="error">{{error}}</p>
+            <button id="loginButton" @click="sendLink" :class="{ clicked: isClicked, notclicked: !isClicked }">Send Sign-In Link</button>
         </div>
     </main>
     <aside></aside>

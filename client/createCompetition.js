@@ -29,18 +29,27 @@ const getIdToken = async () => {
     return null;
   };
 
+function isValidURL(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch (err) {
+        return false;
+    }
+}
+
 // Dashboard Vue instance
 var dashboardApp = new Vue({
     el: '#dashboardApp',
     data: {
       user: null,
+      isClicked:false,
       competitionName: "",
-      organizerEmails:"",
-      dates:"",
       imageUrl: "",
       judgeEmails:"",
       competitionPasscode:"",
-      competitionDescription:""
+      competitionDescription:"",
+      errorMessage:""
     },
     methods: {
       checkSignIn: function () {
@@ -58,33 +67,46 @@ var dashboardApp = new Vue({
       submitNewComp: async function () {
         console.log("Button clicked");
         // Check if the user is logged in
-        if (auth.currentUser) {
+        if (auth.currentUser && !this.isClicked) {
           try {
-            // Get the ID token
-            const idToken = await auth.currentUser.getIdToken();
-            console.log(`Bearer ${idToken}`)
-            // If we have the token, send the request
-            const response = await fetch("https://app-ia6miajuua-uc.a.run.app/competitions/new", { // replace with your actual API URL
-              method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${idToken}`, // Send the ID token in the Authorization header
-              },
-              body: JSON.stringify({
-                name: this.competitionName,
-                description:this.competitionDescription,
-                FeatureImageUrl: this.imageUrl,
-                passcode:this.competitionPasscode,
-                judgeEmails:this.judgeEmails
-                
-                
-            })
-              
-            });
-  
-            const data = await response.json();
-            console.log('Server Response:', data); // Handle the response from the server
+            if (
+              this.competitionName.trim() !== "" &&
+              this.judgeEmails.trim() !== "" &&
+              this.competitionPasscode.trim() !== "" &&
+              this.competitionDescription.trim() !== "" &&
+              isValidURL(this.imageUrl.trim())
+          ){
+            this.isClicked=true;
+             // Get the ID token
+             const idToken = await auth.currentUser.getIdToken();
+             console.log(`Bearer ${idToken}`)
+             // If we have the token, send the request
+             const response = await fetch("https://app-ia6miajuua-uc.a.run.app/competitions/new", { // replace with your actual API URL
+               method: 'PUT',
+               headers: {
+                 'Content-Type': 'application/json',
+                 'Authorization': `Bearer ${idToken}`, // Send the ID token in the Authorization header
+               },
+               body: JSON.stringify({
+                 name: this.competitionName,
+                 description:this.competitionDescription,
+                 FeatureImageUrl: this.imageUrl,
+                 passcode:this.competitionPasscode,
+                 judgeEmails:this.judgeEmails
+                 
+                 
+             })
+               
+             });
+   
+             const data = await response.json();
+             console.log('Server Response:', data); // Handle the response from the server 
             
+          }
+          else{
+            this.errorMessage="Please fill in all fields or check that emails/urls are correct."
+          }
+           
           } catch (error) {
             console.error('Error in submitting new competition:', error);
           }
