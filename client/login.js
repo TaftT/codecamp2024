@@ -19,8 +19,8 @@ const auth = getAuth(app);
 // Send email link for passwordless login
 const sendEmailLink = (email) => {
   const actionCodeSettings = {
-    url:"https://code-camp-showcase.web.app", 
-    // url: "http://localhost:8000/",  // The URL you want to redirect to after clicking the email link
+    // url:"https://code-camp-showcase.web.app", 
+    url: "http://localhost:8000/",  // The URL you want to redirect to after clicking the email link
     handleCodeInApp: true,
   };
 
