@@ -11,7 +11,7 @@ const entriesRoutes = require('./routes/entries');
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:8000',"https://code-camp-showcase.web.app/"], // Replace with your allowed origin
+  origin: ['http://localhost:8000',"https://code-camp-showcase.web.app"], // Replace with your allowed origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Enable setting cookies
 };
