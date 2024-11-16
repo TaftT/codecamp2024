@@ -55,6 +55,7 @@ var dashboardApp = new Vue({
     selectedFile: null,
     uploading: false,
     error: null,
+    menuOpen:false
   },
   methods: {
     checkSignIn: function () {
@@ -107,6 +108,7 @@ var dashboardApp = new Vue({
               console.log('Server Response:', data); // Handle the response from the server
               this.successMessage = "Competition submitted successfully!";
               this.errorMessage = "";
+              window.location.href = 'index.html';
             } else {
               const errorData = await response.json();
               console.error('Error Response:', errorData);

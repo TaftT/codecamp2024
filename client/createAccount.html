@@ -10,24 +10,35 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <h1>LOGO Test 1</h1>
-        <nav>
-            <span class="material-symbols-outlined" id="menuIcon">
-                menu
+    <div id="AppName" v-cloak>
+        <header>
+            <h1>Code Show Off</h1>
+            <nav id="hamburgerNav">
+                <span 
+                    class="material-symbols-outlined" 
+                    id="menuIcon" 
+                    @click="menuOpen = !menuOpen">
+                    menu
                 </span>
-        </nav>
-    </header>
+                <div v-if="menuOpen" id="menuDropdown">
+                    <ul>
+                        <li><a href="#services" v-on:click="page='index'">Home</a></li>
+                        <li v-on:click="page='competitionShowcase'"><a href="#home">All Competitions</a></li>
+                        <li><a href="createCompetition.html">Create Competition</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
 
     <main>
-        <div id="AppName" v-cloak>
+        
             <div id="createAccount">
                 <div id="accountDetails">
                     <h1>Create Account</h1>
                     <input v-model="userName" type="text" id="usernameInput" placeholder="Enter Displayed Name" required><br>
                     <input v-model="linkedIn" type="url" id="linkedINUrl" placeholder="Enter LinkedIn URL" required><br>
-                    <p id="error" v-if="errorMessage"> {{errorMessage}} </p>
+                    <p id="error" v-if="errorMessage"> {{errorMesage}} </p>
                     <div v-on:click="postUserInfo()" id="moreCompButton" :class="{ clicked: isClicked, notclicked: !isClicked }">
                         Create Account
                     </div>
@@ -38,8 +49,9 @@
 
 
 
-        </div>
+        
     </main>
+</div>
     <aside></aside>
     <footer>
     </footer>

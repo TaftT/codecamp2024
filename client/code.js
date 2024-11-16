@@ -71,13 +71,16 @@ var AppName = new Vue({
         teamNumInput:"",
         entryDescription:"",
         competitionId:"",
+        currentEnt:null,
+        menuOpen:false,
+        entries:[],
+        userCompCode:"",
+        errorMessage:"",
         selectedFile: null,
       uploading: false,
       error: null,
     },
     methods: {
-        myMethod: function () {
-        },
         runRoute: function() {
             console.log("here")
             fetch("https://app-ia6miajuua-uc.a.run.app/competitions/all").then( (response)=>{
@@ -89,11 +92,35 @@ var AppName = new Vue({
                 });
             })
         },
+        extractYouTubeVideoId(url) {
+            const match = url?.match(/v=([^&]+)/);
+            return match ? match[1] : "dQw4w9WgXcQ"; // Return video ID or null if not found
+        },
         goToComp: function (comp) {
             this.page='competition';
             console.log(comp)
             this.competition = comp;
+            this.getAllEntries()
         },
+        goToEntry: function (ent) {
+            this.page='singleEntry';
+            console.log(ent)
+            this.currentEnt = ent;
+        },
+        enterAComp:function (){
+            console.log(this.competition)
+            if (this.userCompCode==this.competition.passcode){
+                this.changePage('createEntry');
+                console.log("passed the test");
+
+            }
+            else{
+                this.errorMessage="Something is wrong with your code. Please enter the correct one."
+
+            }
+
+        },
+
         changePage: function (vari) {
             this.page=vari;
         },
@@ -128,6 +155,7 @@ var AppName = new Vue({
             .then(data => {
                 console.log("Response from server:", data);
             })
+            window.location.href = 'index.html';
 
         },
         handleFileChange(event) {
@@ -163,6 +191,17 @@ var AppName = new Vue({
               this.uploading = false;
             }
           },
+        getAllEntries: async function (){
+          
+            fetch(`https://app-ia6miajuua-uc.a.run.app/competitions/byId/`+this.competition.id).then( (response)=>{
+                response.json().then( (data) => {
+                    console.log("important",data);
+                    this.entries=data.data.entries;
+                    console.log(this.entries)
+            
+                });
+            })
+        }
 
     },
     filters: {
