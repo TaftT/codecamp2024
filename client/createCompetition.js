@@ -51,7 +51,7 @@ var dashboardApp = new Vue({
             const idToken = await auth.currentUser.getIdToken();
             console.log(`Bearer ${idToken}`)
           } else {
-            // window.location.href = "/login.html"; // Redirect to login if not signed in
+            window.location.href = "/login.html"; // Redirect to login if not signed in
           }
         });
       },
@@ -90,7 +90,7 @@ var dashboardApp = new Vue({
           }
         } else {
           console.error('User is not authenticated.');
-          // window.location.href = "/login.html"; // Redirect to login if not authenticated
+          window.location.href = "/login.html"; // Redirect to login if not authenticated
         }
       }
     },
