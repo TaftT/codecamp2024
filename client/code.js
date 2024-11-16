@@ -70,11 +70,10 @@ var AppName = new Vue({
         categoryEntry:"",
         teamNumInput:"",
         entryDescription:"",
-        competitionId:"" //not sure how to get this
+        competitionId:"",
+        entries:[]
     },
     methods: {
-        myMethod: function () {
-        },
         runRoute: function() {
             console.log("here")
             fetch("https://app-ia6miajuua-uc.a.run.app/competitions/all").then( (response)=>{
@@ -90,6 +89,7 @@ var AppName = new Vue({
             this.page='competition';
             console.log(comp)
             this.competition = comp;
+            this.getAllEntries()
         },
         changePage: function (vari) {
             this.page=vari;
@@ -126,6 +126,17 @@ var AppName = new Vue({
                 console.log("Response from server:", data);
             })
 
+        },
+        getAllEntries: async function (){
+          
+            fetch(`https://app-ia6miajuua-uc.a.run.app/competitions/byId/`+this.competition.id).then( (response)=>{
+                response.json().then( (data) => {
+                    console.log("important",data);
+                    this.entries=data.data.entries;
+                    console.log(this.entries)
+            
+                });
+            })
         }
 
     },
