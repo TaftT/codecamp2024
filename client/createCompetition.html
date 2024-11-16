@@ -26,21 +26,17 @@
     <div id="dashboardApp" v-cloak>
         <div id="createCompBig">
           <h1>Create Competition</h1>
-          <input type="text" id="competitionNameInput" placeholder="Competition Name" required><br>
+          <input type="text" v-model="competitionName" id="competitionNameInput" placeholder="Competition Name" required><br>
 
-          <input type="email" id="organizerEmailsInput" placeholder="Email of Organizers (separate multiple emails with commas)" required multiple><br>
+          <input type="text" v-model="imageUrl" id="imageUploadInput" placeholder="Image Upload" required><br>
 
-          <input type="text" id="datesInput" placeholder="Dates" required><br>
+          <input type="email" v-model="judgeEmails" id="judgesEmailsInput" placeholder="Judges Emails (separate multiple emails with commas)" required multiple><br>
 
-          <input type="text" id="imageUploadInput" placeholder="Image Upload" required><br>
+          <input type="text" v-model="competitionPasscode" id="competitionPasscodeInput" placeholder="Competition Passcode" required><br>
 
-          <input type="email" id="judgesEmailsInput" placeholder="Judges Emails (separate multiple emails with commas)" required multiple><br>
+          <textarea v-model="competitionDescription" id="competitionDescriptionInput" placeholder="Competition Description" required></textarea><br>
 
-          <input type="text" id="competitionPasscodeInput" placeholder="Competition Passcode" required><br>
-
-          <textarea id="competitionDescriptionInput" placeholder="Competition Description" required></textarea><br>
-
-          <div id="createCompButton">Submit</div>
+          <div id="createCompButton" v-on:click="submitNewComp()">Submit</div>
 
 
         </div>

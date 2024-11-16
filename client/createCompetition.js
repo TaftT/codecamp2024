@@ -33,7 +33,14 @@ const getIdToken = async () => {
 var dashboardApp = new Vue({
     el: '#dashboardApp',
     data: {
-      user: null
+      user: null,
+      competitionName: "",
+      organizerEmails:"",
+      dates:"",
+      imageUrl: "",
+      judgeEmails:"",
+      competitionPasscode:"",
+      competitionDescription:""
     },
     methods: {
       checkSignIn: function () {
@@ -62,7 +69,16 @@ var dashboardApp = new Vue({
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${idToken}`, // Send the ID token in the Authorization header
-              }
+              },
+              body: JSON.stringify({
+                name: this.competitionName,
+                description:this.competitionDescription,
+                FeatureImageUrl: this.imageUrl,
+                passcode:this.competitionPasscode,
+                judgeEmails:this.judgeEmails
+                
+                
+            })
               
             });
   
