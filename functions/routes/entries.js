@@ -1,8 +1,88 @@
 const express = require("express");
 const router = express.Router();
-const admin = require('firebase-admin');
-const authMiddleware = require('../middleware');
-const { v4: uuid } = require('uuid'); // Ensure UUID is imported
+const admin = require("firebase-admin");
+// const { Busboy } = require('busboy')
+// const sharp = require("sharp");
+const { v4: uuid } = require("uuid");
+const authMiddleware = require("../middleware");
+
+// const bucket = admin.storage().bucket();
+
+// router.post("/upload", (req, res) => {
+//     console.log("step 1");
+  
+//     if (req.method !== "POST") {
+//       res.status(405).send("Method Not Allowed");
+//       return;
+//     }
+  
+//     const busboy = Busboy({ headers: req.headers }); // Correct instantiation
+//     const fileBuffer = [];
+//     let fileName = "";
+//     let mimeType = "";
+//     console.log("step 2");
+  
+//     busboy.on("file", (fieldname, file, info) => {
+//       const { filename, mimeType: mime } = info;
+//       mimeType = mime;
+//       fileName = `images/${uuid()}.jpeg`;
+  
+//       file.on("data", (data) => {
+//         fileBuffer.push(data);
+//       });
+  
+//       file.on("end", () => {
+//         console.log(`Finished receiving file: ${filename}`);
+//       });
+//     });
+  
+//     busboy.on("finish", async () => {
+//       if (!fileBuffer.length) {
+//         res.status(400).json({ error: "No file uploaded." });
+//         return;
+//       }
+  
+//       try {
+//         const finalBuffer = Buffer.concat(fileBuffer);
+//         const optimizedImageBuffer = await sharp(finalBuffer)
+//           .resize(800, 800, { fit: "inside", withoutEnlargement: true })
+//           .toFormat("jpeg")
+//           .jpeg({ quality: 80 })
+//           .toBuffer();
+  
+//         const fileUpload = bucket.file(fileName);
+//         const token = uuid();
+  
+//         await fileUpload.save(optimizedImageBuffer, {
+//           metadata: {
+//             contentType: "image/jpeg",
+//             metadata: { firebaseStorageDownloadTokens: token },
+//           },
+//         });
+  
+//         const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(
+//           fileName
+//         )}?alt=media&token=${token}`;
+  
+//         res.status(200).json({
+//           message: "Image uploaded successfully.",
+//           url: publicUrl,
+//         });
+//       } catch (error) {
+//         console.error("Error during image upload:", error);
+//         res.status(500).json({ error: "Internal Server Error" });
+//       }
+//     });
+  
+//     busboy.on("error", (error) => {
+//       console.error("Busboy error:", error);
+//       res.status(500).json({ error: "Internal Server Error" });
+//     });
+  
+//     req.pipe(busboy);
+//   });
+  
+
 
 router.put("/new", authMiddleware, async (req, res) => {
     const user = req.user; // This comes from your authMiddleware (user info)
@@ -36,8 +116,8 @@ router.put("/new", authMiddleware, async (req, res) => {
     if (gitHubUrl && !(gitHubUrl.includes("https://github.com/") || gitHubUrl.includes("https://gitlab.com/"))) {
         return res.status(400).json({ error: 'Please include a valid GitHub or GitLab URL.' });
     }
-    if (youTubeUrl && !youTubeUrl.includes("https://youtube.com/")) {
-        return res.status(400).json({ error: 'Please include a valid https://youtube.com/ URL.' });
+    if (youTubeUrl && !/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(youTubeUrl)) {
+        return res.status(400).json({ error: 'Please include a valid YouTube URL (e.g., https://youtube.com/ or https://youtu.be/).' });
     }
     if (!Array.isArray(entryEmails) || entryEmails.length > 4) {
         return res.status(400).json({ error: 'Teams can only have up to 4 members.' });

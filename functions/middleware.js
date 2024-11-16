@@ -3,7 +3,8 @@ const admin = require('firebase-admin');
 // Initialize Firebase Admin SDK
 admin.initializeApp({
   credential: admin.credential.cert(require('./service-account-file.json')), // Path to your Firebase Admin SDK private key file
-  databaseURL: "https://code-camp-showcase-default-rtdb.firebaseio.com"
+  databaseURL: "https://code-camp-showcase-default-rtdb.firebaseio.com",
+  storageBucket: 'code-camp-showcase.firebasestorage.app'
 });
 
 const authMiddleware = async (req, res, next) => {

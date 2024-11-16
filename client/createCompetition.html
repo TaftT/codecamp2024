@@ -41,6 +41,13 @@
 
           <input type="text" v-model="imageUrl" id="imageUploadInput" placeholder="Image Upload" required><br>
 
+          <div>
+            <input type="file" @change="handleFileChange" />
+            <button @click="uploadImage" :disabled="!selectedFile">Upload</button>
+            <p v-if="uploading">Uploading...</p>
+            <p v-if="error">{{ error }}</p>
+          </div>
+
           <input type="email" v-model="judgeEmails" id="judgesEmailsInput" placeholder="Judges Emails (separate multiple emails with commas)" required multiple><br>
 
           <input type="text" v-model="competitionPasscode" id="competitionPasscodeInput" placeholder="Competition Passcode" required><br>
@@ -57,6 +64,8 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
     <script type="module" src="createCompetition.js"></script>
 </body>
 </html>
