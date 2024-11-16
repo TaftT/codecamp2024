@@ -19,11 +19,10 @@ const auth = getAuth(app);
 // Send email link for passwordless login
 const sendEmailLink = (email) => {
   const actionCodeSettings = {
-    // url:"https://code-camp-showcase.web.app", 
-    url: "http://localhost:8000/",  // The URL you want to redirect to after clicking the email link
+    url: window.location.origin, 
     handleCodeInApp: true,
   };
-
+  console.log(actionCodeSettings)
   sendSignInLinkToEmail(auth, email, actionCodeSettings)
     .then(() => {
       window.localStorage.setItem('emailForSignIn', email);
@@ -40,11 +39,13 @@ const handleEmailLinkSignIn = () => {
 
   if (isSignInWithEmailLink(auth, currentUrl)) {
     let email = window.localStorage.getItem('emailForSignIn');
-    
+    console.log('Current URL:', currentUrl);
+    console.log('Email retrieved from localStorage:', email);
+  
     if (!email) {
       email = window.prompt('Please provide your email for confirmation');
     }
-
+  
     signInWithEmailLink(auth, email, currentUrl)
       .then((result) => {
         console.log('Successfully signed in!', result.user);
@@ -68,7 +69,7 @@ onAuthStateChanged(auth, (user) => {
 var AppName = new Vue({
     el: '#AppName',
     data: {
-        email: 'thistaft@gmail.com', // Input for the user's email address
+        email: 'baprice01@gmail.com', // Input for the user's email address
         error:'',
     },
     methods: {
