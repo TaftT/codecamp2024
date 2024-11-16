@@ -63,12 +63,14 @@ var AppName = new Vue({
         entryName: "",
         teamName:"",
         entryEmails:"",
+        featuredImg:"",
         youTubeUrl:"",
         gitHubUrl:"",
         projectPasscode:"",
         categoryEntry:"",
         teamNumInput:"",
-        entryDescription:""
+        entryDescription:"",
+        competitionId:"" //not sure how to get this
     },
     methods: {
         myMethod: function () {
@@ -84,29 +86,33 @@ var AppName = new Vue({
                 });
             })
         },
-        goToComp: function (comp, pageChange) {
+        goToComp: function (comp) {
             this.page='competition';
-            this.competition =comp;
+            console.log(comp)
+            this.competition = comp;
         },
         changePage: function (vari) {
             this.page=vari;
         },
         createEntry: async function (){
             console.log("here")
+            console.log(this.competition.id)
             
             const idToken = await auth.currentUser.getIdToken();
             console.log(`Bearer ${idToken}`)
 
-            fetch(`https://app-ia6miajuua-uc.a.run.app/users/updateInfo`, {
+            fetch(`https://app-ia6miajuua-uc.a.run.app/entries/new`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${idToken}`,
                   },
                 body:JSON.stringify({
+                    competitionId:this.competition.id,
                     entryName: this.entryName,
                     teamName:this.teamName,
                     entryEmails: this.entryEmails.split(',').map(email => email.trim()),
+                    FeatureImageUrl:this.featuredImg,
                     youTubeUrl:this.youTubeUrl,
                     gitHubUrl:this.gitHubUrl,
                     projectPasscode:this.projectPasscode,

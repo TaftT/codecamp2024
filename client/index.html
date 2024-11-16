@@ -29,9 +29,9 @@
             <div id="welcomeTextOverlay">
                 <h1>Competitors Welcome</h1>
                 <h2>Your idea, your competition, your legacy.</h2>
-                <div  v-on:click="changePage('enterCompetition')" class="indexButton" >
+                <a  href="createCompetition.html" class="indexButton" >
                     Create Competition
-                </div>
+                </a>
             </div>
 
         </div>
@@ -93,9 +93,9 @@
         
                   <input type="email" v-model="entryEmails" id="organizerEmailsInput" placeholder="Team Emails (separate multiple emails with commas)" required multiple><br>
         
-                  <input type="text"  id="imageUploadInput" placeholder="Image Upload" ><br>
+                  <input type="text" v-model="featuredImg" id="imageUploadInput" placeholder="Image Upload" ><br>
         
-                  <input type="url" v-model="youtubeUrl" id="youtubeUrl" placeholder="Enter Youtube URL" required><br>
+                  <input type="url" v-model="youTubeUrl" id="youtubeUrl" placeholder="Enter Youtube URL" required><br>
         
                   <input type="url" v-model="gitHubUrl" id="gitUrl" placeholder="Enter GitHub URL"><br>
         
@@ -127,9 +127,9 @@
                         <p>
                            {{competition.description}}
                         </p>
-                        <a href="enterCompetition.html" class="indexButton">
+                        <div v-on:click="changePage('enterCompetition')" class="indexButton">
                             Enter
-                        </a>
+                        </div>
         
                     </div>
         
