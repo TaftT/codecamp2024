@@ -1,8 +1,9 @@
 import { getAuth, onAuthStateChanged ,isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-storage.js";
 
-// const apiUrl = "https://app-ia6miajuua-uc.a.run.app"
-const apiUrl =  "http://127.0.0.1:5001/code-camp-showcase/us-central1/app"
+
+
 
 const getIdToken = async () => {
     const user = auth.currentUser;
@@ -27,6 +28,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const storage = getStorage(app);
 
 const handleEmailLinkSignIn = () => {
     const currentUrl = window.location.href;
@@ -186,22 +188,43 @@ var AppName = new Vue({
               return;
             }
       
-            const formData = new FormData();
-            formData.append('image', this.selectedFile);
+            const file = this.selectedFile;
+            const storageRef = ref(storage, `uploads/${file.name}`);
       
             this.uploading = true;
             this.error = null;
-            this.featuredImg = null;
+            this.successMessage = "";
       
             try {
-              const response = await axios.post('http://127.0.0.1:5001/code-camp-showcase/us-central1/app/entries/upload', formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
+              const uploadTask = uploadBytesResumable(storageRef, file);
+      
+              uploadTask.on(
+                "state_changed",
+                (snapshot) => {
+                  // Optional: Log upload progress
+                  const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  console.log(`Upload is ${progress}% done`);
                 },
-              });
-              this.featuredImg = response.data.url;
+                (error) => {
+                  // Handle upload error
+                  console.error("Upload failed:", error);
+                  this.error = "Upload failed. Please try again.";
+                },
+                async () => {
+                  // Get the download URL
+                  const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                  console.log("File available at:", downloadURL);
+      
+                  // Set the uploaded file URL
+                  this.featuredImg = downloadURL;
+                  this.successMessage = "File uploaded successfully!";
+                  this.error = null;
+                }
+              );
             } catch (error) {
-              this.error = error.response?.data?.error || "Upload failed.";
+              console.error("Error uploading file:", error);
+              this.error = "An error occurred during file upload.";
+              this.successMessage = "";
             } finally {
               this.uploading = false;
             }
