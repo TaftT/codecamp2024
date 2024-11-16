@@ -35,9 +35,9 @@
             <div id="welcomeTextOverlay">
                 <h1>Competitors Welcome</h1>
                 <h2>Your idea, your competition, your legacy.</h2>
-                <div  id="moreCompButton" v-on:click="changePage('createCompetition')">
+                <a  href="createCompetition.html" id="moreCompButton" >
                     Create Competition
-                </div>
+                </a>
             </div>
 
         </div>
@@ -55,30 +55,11 @@
     </div>
 
 
-    <!-- CREATE COMPETITION -->
-
-    <div id="dashboardApp" v-cloak v-if="page=='createCompetition'">
-        <div id="createCompBig">
-          <h1>Create Competition</h1>
-          <input type="text" id="competitionNameInput" placeholder="Competition Name" required><br>
-
-          <input type="email" id="organizerEmailsInput" placeholder="Email of Organizers (separate multiple emails with commas)" required multiple><br>
-
-          <input type="text" id="datesInput" placeholder="Dates" required><br>
-
-          <input type="text" id="imageUploadInput" placeholder="Image Upload" required><br>
-
-          <input type="email" id="judgesEmailsInput" placeholder="Judges Emails (separate multiple emails with commas)" required multiple><br>
-
-          <input type="text" id="competitionPasscodeInput" placeholder="Competition Passcode" required><br>
-
-          <textarea id="competitionDescriptionInput" placeholder="Competition Description" required></textarea><br>
-
-          <div id="createCompButton">Submit</div>
 
 
-        </div>
-    </div>
+
+
+    
 
 
 
