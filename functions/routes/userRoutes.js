@@ -13,6 +13,10 @@ if (!admin.apps.length) {
   admin.app(); // If already initialized, use the existing app
 }
 
+router.get("/self", authMiddleware, async (req, res) => {
+  res.status(201).json({ userData: req.user });
+})
+
 // Middleware for authenticating the user
 router.put("/updateInfo", authMiddleware, async (req, res) => {
   const user = req.user; // This comes from your authMiddleware (user info)
