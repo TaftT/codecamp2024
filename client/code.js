@@ -168,11 +168,15 @@ var AppName = new Vue({
                     entryDescription:this.entryDescription
                 })
                   
-            }).then(response => response.json())  // Parse the response as JSON
+            }).then(response => {
+                window.location.href = 'index.html';
+                response.json()
+            } )  // Parse the response as JSON
             .then(data => {
                 console.log("Response from server:", data);
+                
             })
-            window.location.href = 'index.html';
+            //window.location.href = 'index.html';
 
         },
         handleFileChange(event) {
