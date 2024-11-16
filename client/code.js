@@ -1,5 +1,19 @@
-import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged ,isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+
+// const apiUrl = "https://app-ia6miajuua-uc.a.run.app"
+const apiUrl =  "http://127.0.0.1:5001/code-camp-showcase/us-central1/app"
+
+const getIdToken = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      // Get ID token from Firebase Authentication
+      const idToken = await user.getIdToken();
+      return idToken;
+    }
+    return null;
+  };
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCPrIrDFUcpJwVj1JjRCeXTe_4GzlQt5hI",
@@ -47,6 +61,7 @@ var AppName = new Vue({
         page:"index",
         competition:null,
         entryName: "",
+        teamName:"",
         entryEmails:"",
         youTubeUrl:"",
         gitHubUrl:"",
@@ -62,8 +77,8 @@ var AppName = new Vue({
             console.log("here")
             fetch("https://app-ia6miajuua-uc.a.run.app/competitions/all").then( (response)=>{
                 response.json().then( (data) => {
-                    console.log("important",data.data);
-                    this.competitions=data.data;
+                    console.log("important",data);
+                    this.competitions=data;
                     console.log(this.competitions)
             
                 });
@@ -76,10 +91,11 @@ var AppName = new Vue({
         changePage: function (vari) {
             this.page=vari;
         },
-        createEntry: function (){
+        createEntry: async function (){
             console.log("here")
             
-            //GET BEARER TOKEN SOMEHOW
+            const idToken = await auth.currentUser.getIdToken();
+            console.log(`Bearer ${idToken}`)
 
             fetch(`https://app-ia6miajuua-uc.a.run.app/users/updateInfo`, {
                 method: "PUT",
@@ -89,6 +105,7 @@ var AppName = new Vue({
                   },
                 body:JSON.stringify({
                     entryName: this.entryName,
+                    teamName:this.teamName,
                     entryEmails: this.entryEmails.split(',').map(email => email.trim()),
                     youTubeUrl:this.youTubeUrl,
                     gitHubUrl:this.gitHubUrl,

@@ -21,13 +21,14 @@
 
 
     <main>
-        <div id="AppName">
+        <div id="AppName" v-cloak>
             <div id="createAccount">
                 <div id="accountDetails">
                     <h1>Create Account</h1>
                     <input v-model="userName" type="text" id="usernameInput" placeholder="Enter Displayed Name" required><br>
                     <input v-model="linkedIn" type="url" id="linkedINUrl" placeholder="Enter LinkedIn URL" required><br>
-                    <div v-on:click="postUserInfo()" id="moreCompButton">
+                    <p id="error" v-if="errorMessage"> {{errorMessage}} </p>
+                    <div v-on:click="postUserInfo()" id="moreCompButton" :class="{ clicked: isClicked, notclicked: !isClicked }">
                         Create Account
                     </div>
     

@@ -29,38 +29,60 @@ const getIdToken = async () => {
     return null;
   };
 
+function isValidURL(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch (err) {
+        return false;
+    }
+}
+
 
 
 var AppName = new Vue({
     el: '#AppName',
     data: {
         userName: '',
-        linkedIn: ""
+        linkedIn: "",
+        isClicked:false,
+        errorMessage:""
     },
     methods: {
         myMethod: function () {
         },
         postUserInfo: async function() {
             console.log("here")
-            
-            const idToken = await auth.currentUser.getIdToken();
-            console.log(`Bearer ${idToken}`)
+            if (
+                this.userName.trim() !== "" &&
+                !this.isclicked &&
+                isValidURL(this.linkedIn.trim())
+            ){
+                this.isClicked=true;
+                const idToken = await auth.currentUser.getIdToken();
+                console.log(`Bearer ${idToken}`)
 
-            fetch(`https://app-ia6miajuua-uc.a.run.app/users/updateInfo`, {
-                method: "PUT",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${idToken}`,
-                  },
-                body:JSON.stringify({
-                    "username": this.userName,
-                    "linkedInURL": this.linkedIn
-                })
+                fetch(`https://app-ia6miajuua-uc.a.run.app/users/updateInfo`, {
+                    method: "PUT",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${idToken}`,
+                    },
+                    body:JSON.stringify({
+                        "username": this.userName,
+                        "linkedInURL": this.linkedIn
+                    })
                   
-            }).then(response => response.json())  // Parse the response as JSON
-            .then(data => {
-                console.log("Response from server:", data);
-            })
+                }).then(response => response.json())  // Parse the response as JSON
+                .then(data => {
+                    console.log("Response from server:", data);
+                })
+                console.log("yes");
+                
+            }
+            else{
+                this.errorMessage="Please fill in all fields or check that the url are correct."
+            }
         },
     },
     filters: {

@@ -69,12 +69,14 @@ onAuthStateChanged(auth, (user) => {
 var AppName = new Vue({
     el: '#AppName',
     data: {
-        email: 'baprice01@gmail.com', // Input for the user's email address
+        email: '', // Input for the user's email address
         error:'',
+        isClicked:false
     },
     methods: {
         sendLink: function () {
-            if (this.email) {
+            if (this.email && !this.isClicked) {
+              this.isClicked=true;
                 sendEmailLink(this.email); // Call the Firebase method to send an email link
             } else {
                 this.error = 'Email is required!';
