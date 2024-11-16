@@ -36,6 +36,9 @@ router.put("/new", authMiddleware, async (req, res) => {
     if (gitHubUrl && !(gitHubUrl.includes("https://github.com/") || gitHubUrl.includes("https://gitlab.com/"))) {
         return res.status(400).json({ error: 'Please include a valid GitHub or GitLab URL.' });
     }
+    if (youTubeUrl && !youTubeUrl.includes("https://youtube.com/")) {
+        return res.status(400).json({ error: 'Please include a valid https://youtube.com/ URL.' });
+    }
     if (!Array.isArray(entryEmails) || entryEmails.length > 4) {
         return res.status(400).json({ error: 'Teams can only have up to 4 members.' });
     }
