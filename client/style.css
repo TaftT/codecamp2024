@@ -24,6 +24,7 @@ main{
     background-color:#081526;
     text-align:center;
     color:white;
+    height:100vh;
 }
 
 #createCompButton.clicked {
