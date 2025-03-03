@@ -13,11 +13,11 @@
     <div id="AppName" v-cloak>
     <header>
         <h1>Code Show Off TEST</h1>
-        <nav id="hamburgerNav">
+        <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false">
             <span 
                 class="material-symbols-outlined" 
-                id="menuIcon" 
-                @click="menuOpen = !menuOpen">
+                id="menuIcon">
+                
                 menu
             </span>
             <div v-if="menuOpen" id="menuDropdown">

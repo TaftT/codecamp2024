@@ -12,10 +12,20 @@
 <body>
     <header>
         <h1>LOGO Test 1</h1>
-        <nav>
-            <span class="material-symbols-outlined" id="menuIcon">
+        <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false">
+            <span 
+                class="material-symbols-outlined" 
+                id="menuIcon">
+                
                 menu
-                </span>
+            </span>
+            <div v-if="menuOpen" id="menuDropdown">
+                <ul>
+                    <li><a href="#services" v-on:click="page='index'">Home</a></li>
+                    <li v-on:click="page='competitionShowcase'"><a href="#home">All Competitions</a></li>
+                    <li><a href="createCompetition.html">Create Competition</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 

@@ -18,13 +18,13 @@
   <div id="dashboardApp" v-cloak>
   <header>
     <h1>Code Show Off</h1>
-    <nav id="hamburgerNav">
-        <span 
-            class="material-symbols-outlined" 
-            id="menuIcon" 
-            @click="menuOpen = !menuOpen">
-            menu
-        </span>
+    <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false">
+      <span 
+          class="material-symbols-outlined" 
+          id="menuIcon">
+          
+          menu
+      </span>
         <div v-if="menuOpen" id="menuDropdown">
             <ul>
                 <li><a href="#services" v-on:click="page='index'">Home</a></li>
@@ -67,5 +67,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
     <script type="module" src="createCompetition.js"></script>
+    
 </body>
 </html>
