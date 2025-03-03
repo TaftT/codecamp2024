@@ -166,8 +166,8 @@
 
 
             <!-- NEED SINGLE ENTRY NEEDS WORK-->
-
-            <div id="entryHero" v-if="page=='singleEntry'">
+            <div id="singleEntry" v-if="page=='singleEntry'"> 
+            <div id="entryHero">
                 <div id="entryVideo">
                     <iframe  
                     height="200"
@@ -190,7 +190,7 @@
 
                 </div>
             </div>
-            <div id="entryDetails" v-if="page=='singleEntry'">
+            <div id="entryDetails" >
                 <div id="entryImages" :style="{ backgroundImage: `url(${currentEnt.FeatureImageUrl})` }"></div>
                 <div id="entryMinorDeets" v-if="currentEnt">
                     <h2 class="details-title">Additional Details</h2>
@@ -210,7 +210,7 @@
                     </ul>
                 </div>
             </div>
-
+        </div>
 
 
 
@@ -219,7 +219,7 @@
             <!-- DISPLAY ALL ENTRIES -->
 
             <div id="homeShowcaseComp" v-if="page=='allEntries'">
-                <h1>Competition Name Entries</h1>
+                <h1>{{competition.name}} Entries</h1>
                 
                   <div id="compMainShowcase">
                     <div id="mainCompWrapper">
