@@ -15,9 +15,7 @@ main{
 
 }
 
-#singleEntry{
-    height:100vh;
-}
+
 
 #error{
     margin-left:auto;
@@ -296,29 +294,7 @@ input[type=text]{
     padding:10px;
 }
 
-#entryDetails{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    background-color:#011C40;
-    width:90%;
-    margin-left:auto;
-    margin-right:auto;
-    
 
-}
-
-#entryImages{
-    padding:20px;
-    width:45%;
-    height:400px;
-    background-color:#081526;
-    margin-bottom:20px;
-    background-position:center;
-        background-size: contain;
-        background-repeat: no-repeat;
-
-}
 
 #menuIcon {
     font-size: 32px;
@@ -403,10 +379,7 @@ input[type=text]{
     display:flex;
     justify-content: space-between;
     align-items:center;
-    background-color:#011C40;
-   
-    
-    
+    background-color:#011C40;    
 }
 
 iframe{
@@ -417,30 +390,18 @@ iframe{
 
 #entryVideo{
     padding:20px;
-    width:47%;
+    width:85%;
+    margin-left:auto;
+    margin-right:auto;
 
 }
 
 #entryMainText{
-    width:47%;
+    width:45%;
+    height:400px;
     padding:20px;
-}
-
-#createCompButton{
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:10px;
-    border-radius:5px;
-    font-weight: bold;
-    cursor:pointer;
-
+    background-color:#081526;
+    margin-bottom:20px;
 }
 
 #votebutton{
@@ -473,6 +434,61 @@ iframe{
     background-color: #43AED9;
     color: white;
 }
+
+#entryDetails{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color:#011C40;
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    
+
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 95%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+#createCompButton{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    border-radius:5px;
+    font-weight: bold;
+    cursor:pointer;
+
+}
+
+
 
 
 #createCompButton:hover{
