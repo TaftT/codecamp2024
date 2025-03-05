@@ -78,7 +78,7 @@
             <!-- DISPLAY ALL COMPETITIONS -->
         
             <div id="homeShowcaseComp" v-if="page=='competitionShowcase'">
-                <h1 id="compsh1">Competitions</h1>
+                <h1 id="compsh1"> All Competitions</h1>
                 <div id="featuredCompWrapper" >
                     
                     <div class="featureCompTile" v-on:click="goToComp(competition)" v-for="competition in competitions" :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
