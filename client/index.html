@@ -47,7 +47,7 @@
 
         </div>
         <div id="homeShowcaseComp">
-            <h2> Recent Competitions</h2>
+            <h1 id="welcomeh1"> Recent Competitions</h1>
             <div id="featuredCompWrapper">
                     <div class="featureCompTile" v-on:click="goToComp(competition)" v-for="competition in competitions.slice(0, 3)" :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
                         <h3 class="featuredCompTitle" > {{competition.name}}</h3>
@@ -78,7 +78,7 @@
             <!-- DISPLAY ALL COMPETITIONS -->
         
             <div id="homeShowcaseComp" v-if="page=='competitionShowcase'">
-                <h1>Competitions</h1>
+                <h1 id="compsh1">Competitions</h1>
                 <div id="featuredCompWrapper" >
                     
                     <div class="featureCompTile" v-on:click="goToComp(competition)" v-for="competition in competitions" :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
@@ -142,9 +142,9 @@
                 <div id="welcomeHero"  :style="{ backgroundImage: `url(${competition.FeatureImageUrl})` }">
                     <div id="welcomeTextOverlay">
                         <h1>{{competition.name}}</h1>
-                        <p>
+                        <h3>
                            {{competition.description}}
-                        </p>
+                        </h3>
                         <div v-on:click="changePage('enterCompetition')" class="indexButton">
                             Enter
                         </div>

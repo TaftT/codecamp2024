@@ -180,7 +180,10 @@ header h1{
     background-color: rgba(0, 0, 0, 0.5);
     margin-left:auto;
     margin-right:auto;
-    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:40px;
+    padding-bottom:40px;
 
 }
 #welcomeTextOverlay h1{
@@ -189,6 +192,7 @@ header h1{
     margin-left:auto;
     margin-right:auto;
     text-align:center;
+    font-size:50px;
 
 }
 
@@ -197,6 +201,15 @@ header h1{
     text-align:center;
     min-height:100vh;
     
+}
+
+#welcomeh1{
+    margin-top:40px;
+}
+
+#compsh1{
+    margin-top:0px;
+    padding:20px;
 }
 
 
@@ -581,6 +594,20 @@ iframe{
         padding:20px;
         width:80%;
     
+    }
+
+    #entryDetails{
+        display:block;
+        text-wrap:wrap;
+    }
+
+    #entryMinorDeets{
+        text-wrap:wrap;
+        word-wrap:break-word;
+        padding:20px;
+        margin-left:auto;
+        margin-right:auto;
+        width:80%;
     }
     
     #entryMainText{
