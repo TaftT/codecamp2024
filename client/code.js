@@ -103,6 +103,9 @@ var AppName = new Vue({
         });
       });
     },
+    toggleMenu: function () {
+      this.menuOpen = !this.menuOpen;
+    },
     extractYouTubeVideoId(url) {
       const match = url?.match(/v=([^&]+)/);
       return match ? match[1] : "dQw4w9WgXcQ"; // Return video ID or null if not found

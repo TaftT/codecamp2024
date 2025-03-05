@@ -79,6 +79,9 @@ var dashboardApp = new Vue({
         }
       });
     },
+    toggleMenu: function () {
+      this.menuOpen = !this.menuOpen;
+    },
     submitNewComp: async function () {
       console.log("Button clicked");
       // Check if the user is logged in
