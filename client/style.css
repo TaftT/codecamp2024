@@ -26,7 +26,7 @@ main{
     background-color:#081526;
     text-align:center;
     color:white;
-    height:100vh;
+    height:auto;
 }
 
 #createCompButton.clicked {
@@ -74,6 +74,11 @@ main{
     width:70%;
     margin-left:auto;
     margin-right:auto;
+    padding-top:20px;
+    height:100vh;
+}
+#createCompBig h1{
+    padding-bottom:20px;
 }
 
 input[type=url]{
@@ -452,7 +457,7 @@ iframe{
 #entryDetails{
     display:flex;
     justify-content: space-between;
-    align-items:center;
+    align-items:stretch;
     background-color:#011C40;
     width:90%;
     margin-left:auto;
@@ -467,6 +472,7 @@ iframe{
     justify-content: center;
     position: relative;
     width: 95%;
+    height:250px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -503,7 +509,30 @@ iframe{
 }
 
 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 10px;
+}
 
 #createCompButton:hover{
     background-color: #2e7c9b;

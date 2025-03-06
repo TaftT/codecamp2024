@@ -192,9 +192,9 @@
 
                 </div>
                 <div id="entryMinorDeets" v-if="currentEnt">
-                    <div class="carousel">
+                    <div class="carousel" @click="openImage(currentEnt.FeatureImageUrl)">
                         <div class="carousel-wrapper">
-                          <img :src="currentEnt.FeatureImageUrl" class="carousel-image" />
+                            <img :src="currentEnt.FeatureImageUrl" class="carousel-image" />
                         </div>
                     </div>
                     <h2 class="details-title">Additional Details</h2>
@@ -216,6 +216,12 @@
             </div>
         </div>
 
+
+        <div v-if="showModal" class="modal" @click="closeModal">
+            <div class="modal-content">
+                <img :src="currentEnt.FeatureImageUrl" class="modal-image" />
+            </div>
+        </div>
 
 
 

@@ -70,6 +70,7 @@ var AppName = new Vue({
     test: "Hello test",
     competitions: [],
     isClicked: false,
+    showModal: false,
     page: "index",
     competition: null,
     entryName: "",
@@ -105,6 +106,13 @@ var AppName = new Vue({
     },
     toggleMenu: function () {
       this.menuOpen = !this.menuOpen;
+    },
+    openImage(imageUrl) {
+      this.modalImageUrl = imageUrl;
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
     },
     extractYouTubeVideoId(url) {
       const match = url?.match(/v=([^&]+)/);
