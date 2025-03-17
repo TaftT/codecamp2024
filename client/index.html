@@ -7,12 +7,13 @@
     <!-- Your styles -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Document</title>
 </head>
 <body>
     <div id="AppName" v-cloak>
     <header>
-        <h1>Code Show Off TEST</h1>
+        <h1 @click="changePage('index')">Code Show Off TEST</h1>
         <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false" @click="toggleMenu">
             <span 
                 class="material-symbols-outlined" 
@@ -95,7 +96,7 @@
             <!-- CREATE ENTRY -->
 
             <div id="dashboardApp" v-cloak v-if="page=='createEntry'">
-                <div id="createCompBig">
+                <div id="createEntBig">
                   <h1>Create Entry</h1>
                   <input type="text" v-model="entryName" id="entryNameInput" placeholder="Entry Name" required><br>
 
@@ -152,6 +153,9 @@
                     </div>
         
                 </div>
+                <div class="goback" @click="changePage('competitionShowcase')"> <span class="material-symbols-outlined">
+                    keyboard_backspace
+                    </span> <h2>All Competitions</h2></div>
                 <div id="compMainShowcase">
                     <div id="mainCompWrapper">
                             <div class="featureEntryTile"  v-on:click="goToEntry(entry)" v-for="entry in entries" :style="{ backgroundImage: `url(${entry.FeatureImageUrl})` }">
@@ -167,6 +171,9 @@
 
             <!-- NEED SINGLE ENTRY NEEDS WORK-->
             <div id="singleEntry" v-if="page=='singleEntry'"> 
+            <div class="goback" @click="goToComp(competition)"> <span class="material-symbols-outlined">
+                keyboard_backspace
+                </span> <h2>{{competition.name}}</h2></div>
             <div id="entryHero">
                 <div id="entryVideo">
                     
