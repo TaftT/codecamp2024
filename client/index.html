@@ -188,18 +188,12 @@
                 keyboard_backspace
                 </span> <h2>{{competition.name}}</h2></div>
             <div id="entryHero">
-                <div id="entryVideo">
-                    
-                    <iframe  
-                    height="500"
-                    :src="'https://www.youtube.com/embed/' + extractYouTubeVideoId(currentEnt.youTubeUrl)" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                    
+                <div class="carousel" @click="openImage(currentEnt.FeatureImageUrl)">
+                    <div class="carousel-wrapper">
+                        <img :src="currentEnt.FeatureImageUrl" class="carousel-image" />
+                    </div>
                 </div>
+
             </div>
             <div id="entryDetails" >
                 <div id="entryMainText">
@@ -208,15 +202,6 @@
                         {{currentEnt.entryDescription}}
                     </p>
 
-                    <div id="votebutton" :class="{ clicked: isClicked, notclicked: !isClicked}" v-on:click="vote()">Vote</div>
-
-                </div>
-                <div id="entryMinorDeets" v-if="currentEnt">
-                    <div class="carousel" @click="openImage(currentEnt.FeatureImageUrl)">
-                        <div class="carousel-wrapper">
-                            <img :src="currentEnt.FeatureImageUrl" class="carousel-image" />
-                        </div>
-                    </div>
                     <h2 class="details-title">Additional Details</h2>
                     <ul class="details-list">
                         <li>
@@ -232,6 +217,22 @@
                             <strong>Table Location:</strong> {{ currentEnt.teamNumInput || 'N/A' }}
                         </li>
                     </ul>
+
+                    <div id="votebutton" :class="{ clicked: isClicked, notclicked: !isClicked}" v-on:click="vote()">Vote</div>
+
+                </div>
+                <div id="entryMinorDeets" v-if="currentEnt">
+                    <div id="entryVideo">
+                        <iframe  
+                        height="300"
+                        :src="'https://www.youtube.com/embed/' + extractYouTubeVideoId(currentEnt.youTubeUrl)" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        
+                    </div>
                 </div>
             </div>
         </div>

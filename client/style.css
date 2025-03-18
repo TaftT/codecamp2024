@@ -408,6 +408,9 @@ input[type=text]{
     padding:20px;
     background-color:#081526;
     margin-bottom:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
@@ -441,9 +444,14 @@ input[type=text]{
 
 #entryHero{
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items:center;
-    background-color:#011C40;    
+    background-color:#081526;   
+    width:fit-content;
+    margin-left:auto;
+    margin-right:auto;
+    padding:40px;
+    margin-bottom:20px;
 }
 
 iframe{
@@ -454,7 +462,7 @@ iframe{
 
 #entryVideo{
     padding:20px;
-    width:85%;
+    width:100%;
     margin-left:auto;
     margin-right:auto;
 
@@ -466,6 +474,7 @@ iframe{
     padding:20px;
     background-color:#081526;
     margin-bottom:20px;
+    
 }
 
 #entryMainText h1{
@@ -520,13 +529,15 @@ iframe{
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 95%;
-    height:250px;
+    width: fit-content;
+    height:auto;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-left:auto;
     margin-right:auto;
+    margin-top:10px;
+    margin-bottom:10px;
   }
   
   .carousel-wrapper {
@@ -536,7 +547,7 @@ iframe{
   
   .carousel-image {
     width: 100%;
-    height: auto;
+    height: 350px;
     object-fit: cover;
   }
 
@@ -681,18 +692,18 @@ iframe{
     }
 
     #entryMinorDeets{
-        text-wrap:wrap;
-        word-wrap:break-word;
         padding:20px;
         margin-left:auto;
         margin-right:auto;
-        width:80%;
+        width:90%;
     }
     
     #entryMainText{
+        text-wrap:wrap;
+        word-wrap:break-word;
         margin-left:auto;
         margin-right:auto;
-        width:80%;
+        width:90%;
         padding:20px;
     }
     body{
