@@ -7,6 +7,8 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <style>
     /* Prevent flickering of Vue bindings */
@@ -17,7 +19,7 @@
 <body>
   <div id="dashboardApp" v-cloak>
   <header>
-    <h1>Code Show Off</h1>
+    <h1 style="font-family: 'Tektur', sans-serif">CodeArena</h1>
     <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false" @click="toggleMenu">
       <span 
           class="material-symbols-outlined" 
@@ -27,8 +29,8 @@
       </span>
         <div v-if="menuOpen" id="menuDropdown">
             <ul>
-                <li><a href="#services" v-on:click="page='index'">Home</a></li>
-                <li v-on:click="page='competitionShowcase'"><a href="#home">All Competitions</a></li>
+                <li><a href="index.html" v-on:click="page='index'">Home</a></li>
+                <li ><a href="index.html" v-on:click="page='competitionShowcase'">All Competitions</a></li>
                 <li><a href="createCompetition.html">Create Competition</a></li>
             </ul>
         </div>
@@ -36,17 +38,26 @@
 </header>
     
         <div id="createCompBig">
-          <h1>Create Competition</h1>
+          <h1 style="font-family: 'Tektur', sans-serif">Create Competition</h1>
           <input type="text" v-model="competitionName" id="competitionNameInput" placeholder="Competition Name" required><br>
 
           <input type="text" v-model="imageUrl" id="imageUploadInput" placeholder="Image Upload" required><br>
 
-          <div>
-            <input type="file" @change="handleFileChange" />
-            <button @click="uploadImage" :disabled="!selectedFile">Upload</button>
-            <p v-if="uploading">Uploading...</p>
-            <p v-if="error">{{ error }}</p>
-          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; border: 2px dashed #007BFF; border-radius: 10px; background: #f8f9fa; width: 75%; margin: auto;">
+            <input type="file" @change="handleFileChange" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100%;"/>
+            
+            <button 
+                @click="uploadImage" 
+                :disabled="!selectedFile"
+                style="padding: 10px 15px; border: none; border-radius: 5px; background-color: #007BFF; color: white; cursor: pointer; width: 100%; transition: 0.3s;"
+                :style="{ backgroundColor: !selectedFile ? '#ccc' : '#007BFF', cursor: !selectedFile ? 'not-allowed' : 'pointer' }"
+            >
+                Upload
+            </button>
+        
+            <p v-if="uploading" style="color: #FFA500; font-weight: bold;">Uploading...</p>
+            <p v-if="error" style="color: red; font-weight: bold;">{{ error }}</p>
+        </div>
 
           <input type="email" v-model="judgeEmails" id="judgesEmailsInput" placeholder="Judges Emails (separate multiple emails with commas)" required multiple><br>
 
@@ -67,6 +78,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
     <script type="module" src="createCompetition.js"></script>
+    
+    <script type="module" src="code.js"></script>
     
 </body>
 </html>

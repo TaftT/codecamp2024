@@ -16,10 +16,12 @@ main{
 }
 
 header h1{
+    font-family: "Tektur", sans-serif;
     cursor: pointer;
 }
 
 .goback{
+    font-family: "Tektur", sans-serif;
     text-align:left;
     display:flex;
     align-items:center;
@@ -227,6 +229,7 @@ header h1{
 
 }
 #welcomeTextOverlay h1{
+    font-family: "Tektur", sans-serif;
     width:100%;
     margin-top:0px;
     margin-left:auto;
@@ -243,11 +246,17 @@ header h1{
     
 }
 
+
+#homeShowcaseComp h1{
+    font-family: "Tektur", sans-serif;
+}
+
 #welcomeh1{
     margin-top:40px;
 }
 
 #compsh1{
+    font-family: "Tektur", sans-serif;
     margin-top:0px;
     padding:20px;
     font-size:50px;
@@ -330,7 +339,7 @@ input[type=text]{
     color:white;
     display:flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     min-width: 300px;
     border-radius:5px;
 
@@ -403,6 +412,7 @@ input[type=text]{
 }
 
 .details-title {
+    font-family: "Tektur", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     margin-top:10px;
@@ -456,6 +466,10 @@ iframe{
     padding:20px;
     background-color:#081526;
     margin-bottom:20px;
+}
+
+#entryMainText h1{
+    font-family: "Tektur", sans-serif;
 }
 
 #votebutton{
@@ -682,6 +696,7 @@ iframe{
         padding:20px;
     }
     body{
+        font-family: "PT Sans", sans-serif;
         width:390px;
         margin-left:auto;
         margin-right:auto;
