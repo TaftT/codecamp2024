@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Your styles -->
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
 </head>
 <body>
     <header>
-        <h1>Code Show Off</h1>
+        <h1 style="font-family: 'Tektur', sans-serif;">CodeArena</h1>
         <nav>
             <span class="material-symbols-outlined" id="menuIcon">
                 menu
@@ -19,12 +22,25 @@
         </nav>
     </header>
 
-    <main>
-        <div id="AppName" class="login" v-cloak>
-            <input type="email" v-model="email" @keydown="resetError"  placeholder="Enter your email">
-            <p v-if="error">{{error}}</p>
-            <button id="loginButton" @click="sendLink" :class="{ clicked: isClicked, notclicked: !isClicked }">Send Sign-In Link</button>
-        </div>
+    <main style="background-color:  #081526;">
+        <div id="AppName" class="login" v-cloak 
+    style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; width: 80%; margin-left: auto;margin-right:auto; background-color:  #011C40;">
+    <div class="goback" @click="goHome"> <span class="material-symbols-outlined">
+        keyboard_backspace
+        </span> <h2>Home</h2></div>
+    <h1 style="font-family: 'Tektur', sans-serif">Sign In</h1>
+    <input type="email" v-model="email" @keydown="resetError" placeholder="Enter your email" 
+        style="width: 80%; padding: 10px; margin-bottom:0px; border: 1px solid #aaa; border-radius: 5px; font-size: 14px;">
+
+    <p > Clikcing the button below will also create your account if it doesn't already exist</p>
+    <p v-if="error" style="color: red; font-size: 12px; margin: 0;">{{error}}</p>
+
+    <button id="loginButton" @click="sendLink" 
+        :class="{ clicked: isClicked, notclicked: !isClicked }"
+        style="width: 20%; margin-left: auto;margin-right:auto; padding: 10px; border: none; border-radius: 5px; background-color: #007bff; color: white; font-size: 16px; cursor: pointer;">
+        Send Sign-In Link
+    </button>
+</div>
     </main>
     <aside></aside>
     <footer>
@@ -39,5 +55,6 @@
 
     <!-- Your custom JavaScript -->
     <script type="module" src="login.js"></script>
+    <script type="module" src="code.js"></script>
 </body>
 </html>

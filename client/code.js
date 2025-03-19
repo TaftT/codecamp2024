@@ -145,6 +145,11 @@ var AppName = new Vue({
           "Something is wrong with your code. Please enter the correct one.";
       }
     },
+    goHome: function () {
+      console.log("hi");
+      window.location.href = "/index.html";
+      this.page = "index;";
+    },
 
     changePage: function (vari) {
       if (vari == "enterCompetition") {

@@ -16,24 +16,21 @@
 </head>
 <body>
     <div id="AppName" v-cloak>
-    <header>
-        <h1 @click="changePage('index')">CodeArena</h1>
-        <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false" @click="toggleMenu">
-            <span 
-                class="material-symbols-outlined" 
-                id="menuIcon">
-                
-                menu
-            </span>
-            <div v-if="menuOpen" id="menuDropdown">
-                <ul>
-                    <li><a href="#services" v-on:click="page='index'">Home</a></li>
-                    <li v-on:click="page='competitionShowcase'"><a href="#home">All Competitions</a></li>
-                    <li><a href="createCompetition.html">Create Competition</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <header>
+            <h1 style="font-family: 'Tektur', sans-serif">CodeArena</h1>
+            <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false" @click="toggleMenu">
+              <span 
+                  class="material-symbols-outlined" 
+                  id="menuIcon">
+                  
+                  menu
+              </span>
+                <div v-if="menuOpen" id="menuDropdown">
+                    <ul>
+                        <li><a href="index.html" v-on:click="page='index'">Home</a></li>
+                    </ul>
+                </div>
+            </nav>
 
 
     <main>
