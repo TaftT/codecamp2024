@@ -21,6 +21,14 @@ header h1{
     cursor: pointer;
 }
 
+#goHome{
+    text-decoration: none;
+    color: inherit;
+    all: unset;
+    margin-left: 15px;
+    margin-right: auto;
+}
+
 .goback{
     font-family: "Tektur", sans-serif;
     text-align:left;

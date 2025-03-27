@@ -19,15 +19,21 @@
             <span class="material-symbols-outlined" id="menuIcon">
                 menu
                 </span>
+                <div v-if="menuOpen" id="menuDropdown">
+                    <ul>
+                        <li><a href="index.html" v-on:click="page='index'">Home</a></li>
+                        <li><a href="createCompetition.html">Create Competition</a></li>
+                    </ul>
+                </div>
         </nav>
     </header>
 
     <main style="background-color:  #081526;">
         <div id="AppName" class="login" v-cloak 
     style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; width: 80%; margin-left: auto;margin-right:auto; background-color:  #011C40;">
-    <div class="goback" @click="goHome"> <span class="material-symbols-outlined">
+    <a  href="index.html" id="goHome" v-on:click="page='index'"><div class="goback"> <span class="material-symbols-outlined">
         keyboard_backspace
-        </span> <h2>Home</h2></div>
+        </span> <h2>Home</h2></div></a>
     <h1 style="font-family: 'Tektur', sans-serif">Sign In</h1>
     <input type="email" v-model="email" @keydown="resetError" placeholder="Enter your email" 
         style="width: 80%; padding: 10px; margin-bottom:0px; border: 1px solid #aaa; border-radius: 5px; font-size: 14px;">
