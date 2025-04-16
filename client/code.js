@@ -105,6 +105,7 @@ var AppName = new Vue({
       });
     },
     toggleMenu: function () {
+      console.log(menuOpen, "AQUE");
       this.menuOpen = !this.menuOpen;
     },
     openImage(imageUrl) {

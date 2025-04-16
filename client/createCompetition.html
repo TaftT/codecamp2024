@@ -19,7 +19,7 @@
 <body>
   <div id="dashboardApp" v-cloak>
   <header>
-    <h1 style="font-family: 'Tektur', sans-serif">CodeArena</h1>
+    <h1 style="font-family: 'Tektur', sans-serif"><a href="index.html" v-on:click="page='index'">CodeArena</a></h1>
     <nav id="hamburgerNav"  @mouseover="menuOpen = true" @mouseleave="menuOpen = false" @click="toggleMenu">
       <span 
           class="material-symbols-outlined" 
@@ -38,6 +38,9 @@
 </header>
     
         <div id="createCompBig">
+          <a  href="index.html" id="goHome" v-on:click="page='index'"><div class="goback"> <span class="material-symbols-outlined">
+            keyboard_backspace
+            </span> <h2>Home</h2></div></a>
           <h1 style="font-family: 'Tektur', sans-serif">Create Competition</h1>
           <input type="text" v-model="competitionName" id="competitionNameInput" placeholder="Competition Name" required><br>
 
