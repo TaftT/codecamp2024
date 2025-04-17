@@ -12,8 +12,8 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-storage.js";
 
-// const apiUrl = "https://app-ia6miajuua-uc.a.run.app";
-const apiUrl = "http://127.0.0.1:5001/code-camp-showcase/us-central1/app";
+const apiUrl = "https://app-ia6miajuua-uc.a.run.app";
+// const apiUrl = "http://127.0.0.1:5001/code-camp-showcase/us-central1/app";
 
 const getIdToken = async () => {
   const user = auth.currentUser;
