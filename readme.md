@@ -64,3 +64,18 @@ After deployment, you can access the live version of your application through th
 While running the Firebase Emulator for functions, you can access your emulated functions locally at:
 
 - **Local Functions URL:** `http://127.0.0.1:5001/code-camp-showcase/us-central1/app`
+
+## 6. **Deploying the client**
+
+```bash
+ ~/codecamp2024 $ firebase use --add
+? Which project do you want to add? code-camp-showcase
+? What alias do you want to use for this project? (e.g. staging) live
+
+
+Created alias live for code-camp-showcase.
+Now using alias live (code-camp-showcase)
+
+ firebase deploy --only hosting
+
+   ```
