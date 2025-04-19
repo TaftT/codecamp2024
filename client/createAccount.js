@@ -4,8 +4,8 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 
-// const apiUrl = "https://app-ia6miajuua-uc.a.run.app"
-const apiUrl = "http://127.0.0.1:5001/code-camp-showcase/us-central1/app";
+const apiUrl = "https://app-ia6miajuua-uc.a.run.app"
+// const apiUrl = "http://127.0.0.1:5001/code-camp-showcase/us-central1/app";
 // Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCPrIrDFUcpJwVj1JjRCeXTe_4GzlQt5hI",
