@@ -751,6 +751,10 @@ iframe{
     #welcomeHero{
         height:420px;
     }
+
+    #imgUp{
+        width:70%;
+    }
 }
 
 
@@ -766,6 +770,9 @@ iframe{
     iframe{
         height:175px;
         width:100%;
+    }
+    #imgUp{
+        width:65%;
     }
 }
 
