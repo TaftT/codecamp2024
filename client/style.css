@@ -704,7 +704,7 @@ iframe{
         margin-left:auto;
         margin-right:auto;
         padding:20px;
-        width:80%;
+        width:100%;
     
     }
 
@@ -718,6 +718,7 @@ iframe{
         margin-left:auto;
         margin-right:auto;
         width:90%;
+        height:auto;
     }
     
     #entryMainText{
@@ -730,8 +731,38 @@ iframe{
         height:auto;
     }
     iframe{
-        height:auto;
-        width:90%;
+        height:350px;
+        width:100%;
+    }
+}
+
+@media (max-width: 750px){
+    iframe{
+        height:300px;
+        width:100%;
+    }
+}
+
+@media (max-width: 600px){
+    iframe{
+        height:250px;
+        width:100%;
+    }
+}
+
+
+@media (max-width: 500px){
+    iframe{
+        height:200px;
+        width:100%;
+    }
+}
+
+
+@media (max-width: 450px){
+    iframe{
+        height:175px;
+        width:100%;
     }
 }
 
