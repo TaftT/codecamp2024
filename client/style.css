@@ -748,6 +748,9 @@ iframe{
         height:250px;
         width:100%;
     }
+    #welcomeHero{
+        height:420px;
+    }
 }
 
 
@@ -816,7 +819,7 @@ iframe{
     #welcomeHero{
         background-image: url("imgs/homeHero.jpg");
         width:390px;
-        height:390px;
+        height:420px;
         background-position:center;
         background-size: cover;
         background-repeat: no-repeat;
