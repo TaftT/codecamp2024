@@ -92,6 +92,7 @@ var AppName = new Vue({
     selectedFile: null,
     uploading: false,
     error: null,
+    votes: [],
   },
   methods: {
     runRoute: function () {
@@ -107,6 +108,16 @@ var AppName = new Vue({
     toggleMenu: function () {
       console.log(menuOpen, "AQUE");
       this.menuOpen = !this.menuOpen;
+    },
+    getVotes: function (compId) {
+      console.log("got them", compId);
+      // retreive the votes cast for competition
+    },
+    castVote: function (userId) {
+      //call getVotes and await response
+      //check votes to see if user has already voted 3 times
+      //if voted less than 3 times post vote
+      console.log(userId);
     },
     openImage(imageUrl) {
       this.modalImageUrl = imageUrl;
